@@ -71,7 +71,7 @@ namespace Task1.Tests
             DataAccessMethod.Sequential)]
         [DeploymentItem("Task1.Tests\\Data.xml")]
         [TestMethod]
-        public void TestMethod()
+        public void DDT()
         {
             int[] arrayModel = new int[]
             {
