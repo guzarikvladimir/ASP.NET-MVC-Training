@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Task1</name>
+    </assembly>
+    <members>
+        <member name="T:Task1.Find">
+            <summary>
+            Класс для поиска в массиве специальных элементов
+            </summary>
+        </member>
+        <member name="M:Task1.Find.ElemWithEqualSumBothSides(System.Int32[])">
+            <summary>
+            Метод для поиска индекса элемента, для которого сумма элементов слева от него равна сумме элементов справа.
+            </summary>
+            <param name="arr">Целочисленный массив длины (0, 1000)</param>
+            <returns>Наименьший индекс, для которого сторона слева равна стороне справа.
+            Если такого индекса не существует возвращает -1</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Происходит, если длина массива находится вне границ</exception>
+            <exception cref="T:System.ArgumentNullException">Происходит, если на вход функции подается null массив</exception>
+        </member>
+        <member name="M:Task1.Find.Sum(System.Int32[],System.Int32,System.Int32)">
+            <summary>
+            Вспомогательный метод подсчета суммы
+            </summary>
+            <param name="arr">Целочисленный массив</param>
+            <param name="first">Первый элемент</param>
+            <param name="last">Второй элемент</param>
+            <returns>Сумма элементов между первым входным и вторым</returns>
+        </member>
+    </members>
+</doc>

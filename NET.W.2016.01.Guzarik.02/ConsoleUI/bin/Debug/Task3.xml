@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Task3</name>
+    </assembly>
+    <members>
+        <member name="T:Task3.Bits">
+            <summary>
+            Класс для преобразования целых чсиел с помощью битовых операций
+            </summary>
+        </member>
+        <member name="M:Task3.Bits.Insertion(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Метод вставки одного числа в другое так, чтобы второе число занимало позицию с бита i по бит j (биты нумеруются справа налево)
+            </summary>
+            <param name="first">Первое число</param>
+            <param name="second">Второе число</param>
+            <param name="i">Первая позиция в первом числе справа</param>
+            <param name="j">Вторая позиция в первом числе слева</param>
+            <returns>Результат вставки битов из второго числа в первое</returns>
+            <exception cref="T:System.InvalidOperationException">Происходит, если позиция i > j</exception>
+        </member>
+    </members>
+</doc>

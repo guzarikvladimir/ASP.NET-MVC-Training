@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Task2</name>
+    </assembly>
+    <members>
+        <member name="T:Task2.Concat">
+            <summary>
+            Класс для работы с конкатенацией строк
+            </summary>
+        </member>
+        <member name="M:Task2.Concat.ExceptRepeating(System.String,System.String)">
+            <summary>
+            Возвращает конкатенированную остортированную по алфавиту строку, исключая повторяющиеся символы
+            </summary>
+            <param name="str1">Первая строка</param>
+            <param name="str2">Вторая строка</param>
+            <returns>Конкатенированная остортированная по алфавиту строка без повторяющихся символов</returns>
+            <exception cref="T:System.InvalidOperationException">Происходит, если строка содержит символы, отличные от букв</exception>
+        </member>
+    </members>
+</doc>

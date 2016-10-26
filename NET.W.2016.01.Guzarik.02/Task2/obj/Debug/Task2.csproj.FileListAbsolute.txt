@@ -1,0 +1,6 @@
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.02\Task2\bin\Debug\Task2.XML
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.02\Task2\bin\Debug\Task2.dll
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.02\Task2\bin\Debug\Task2.pdb
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.02\Task2\obj\Debug\Task2.dll
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.02\Task2\obj\Debug\Task2.pdb
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.02\Task2\obj\Debug\Task2.csprojResolveAssemblyReference.cache
