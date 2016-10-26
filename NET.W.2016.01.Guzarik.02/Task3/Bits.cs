@@ -20,11 +20,11 @@ namespace Task3
         /// <param name="i">Первая позиция в первом числе справа</param>
         /// <param name="j">Вторая позиция в первом числе слева</param>
         /// <returns>Результат вставки битов из второго числа в первое</returns>
-        /// <exception cref="InvalidOperationException">Происходит, если позиция i > j</exception>
+        /// <exception cref="ArgumentException">Происходит, если позиция i > j</exception>
         public static int Insertion(int first, int second, int i, int j)
         {
             if (i > j)
-                throw new InvalidOperationException();
+                throw new ArgumentException();
 
             int mask = 0;
 
