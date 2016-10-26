@@ -15,16 +15,20 @@ namespace Task2
         /// <param name="str1">Первая строка</param>
         /// <param name="str2">Вторая строка</param>
         /// <returns>Конкатенированная остортированная по алфавиту строка без повторяющихся символов</returns>
-        /// <exception cref="InvalidOperationException">Происходит, если строка содержит символы, отличные от букв</exception>
+        /// <exception cref="ArgumentNullException">Происходит, если на вход подается null строка</exception>
+        /// <exception cref="ArgumentException">Происходит, если строка содержит символы, отличные от букв</exception>
         public static string ExceptRepeating(string str1, string str2)
         {
+            if (ReferenceEquals(str1, null) || ReferenceEquals(str2, null))
+                throw new ArgumentNullException();
+
             for (int i = 0; i < str1.Length; i++)
                 if (str1[i] < 'a' || str1[i] > 'z')
-                    throw new InvalidOperationException();
+                    throw new ArgumentException();
 
             for (int i = 0; i < str2.Length; i++)
                 if (str2[i] < 'a' || str2[i] > 'z')
-                    throw new InvalidOperationException();
+                    throw new ArgumentException();
 
             StringBuilder str;
 
