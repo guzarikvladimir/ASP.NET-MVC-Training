@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Task1Strong</name>
+    </assembly>
+    <members>
+        <member name="T:Task1Strong.Sort">
+            <summary>
+            Статический класс, содержащий различные виды сортировок
+            </summary>
+        </member>
+        <member name="M:Task1Strong.Sort.QuickSort(System.Int32[])">
+            <summary>
+            Открытый метод быстрой сортировки
+            </summary>
+            <param name="arr">Целочисленный массив</param>
+        </member>
+        <member name="M:Task1Strong.Sort.QuickSort(System.Int32[],System.Int32,System.Int32)">
+            <summary>
+            Скрытый метод быстрой сортирвки
+            </summary>
+            <param name="arr">Целочисленный массив</param>
+            <param name="first">Левая граница</param>
+            <param name="last">Правая граница</param>
+        </member>
+    </members>
+</doc>

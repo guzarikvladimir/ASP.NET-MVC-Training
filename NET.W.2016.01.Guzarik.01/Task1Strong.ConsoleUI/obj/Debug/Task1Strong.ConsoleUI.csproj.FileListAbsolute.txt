@@ -1,0 +1,9 @@
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\bin\Debug\Task1Strong.ConsoleUI.exe.config
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\bin\Debug\Task1Strong.ConsoleUI.exe
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\bin\Debug\Task1Strong.ConsoleUI.pdb
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\bin\Debug\Task1Strong.dll
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\bin\Debug\Task1Strong.pdb
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\obj\Debug\Task1Strong.ConsoleUI.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\obj\Debug\Task1Strong.ConsoleUI.exe
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\obj\Debug\Task1Strong.ConsoleUI.pdb
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1Strong.ConsoleUI\bin\Debug\Task1Strong.xml

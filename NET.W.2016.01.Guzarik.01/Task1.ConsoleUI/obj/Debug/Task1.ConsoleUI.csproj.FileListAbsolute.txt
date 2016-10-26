@@ -1,0 +1,8 @@
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\bin\Debug\Task1.ConsoleUI.exe.config
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\bin\Debug\Task1.ConsoleUI.exe
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\bin\Debug\Task1.ConsoleUI.pdb
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\bin\Debug\Task1.dll
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\bin\Debug\Task1.pdb
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\obj\Debug\Task1.ConsoleUI.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\obj\Debug\Task1.ConsoleUI.exe
+C:\Users\Sacris\Desktop\ASP.NET-MVC-Training.git\NET.W.2016.01.Guzarik.01\Task1.ConsoleUI\obj\Debug\Task1.ConsoleUI.pdb
