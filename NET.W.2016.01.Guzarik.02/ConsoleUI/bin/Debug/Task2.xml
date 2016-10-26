@@ -16,7 +16,8 @@
             <param name="str1">Первая строка</param>
             <param name="str2">Вторая строка</param>
             <returns>Конкатенированная остортированная по алфавиту строка без повторяющихся символов</returns>
-            <exception cref="T:System.InvalidOperationException">Происходит, если строка содержит символы, отличные от букв</exception>
+            <exception cref="T:System.ArgumentNullException">Происходит, если на вход подается null строка</exception>
+            <exception cref="T:System.ArgumentException">Происходит, если строка содержит символы, отличные от букв</exception>
         </member>
     </members>
 </doc>
