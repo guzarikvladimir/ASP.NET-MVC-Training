@@ -12,24 +12,11 @@ namespace TaskExtension.Tests
         public void GetBits()
         {
             double a = 2.4;
-            BitArray bitArray = new BitArray(BitConverter.GetBytes(a));
-            string expected = BitsToString(bitArray);
+            BitArray expected = new BitArray(BitConverter.GetBytes(a));
 
-            BitArray bits = a.GetBits();
-            string actual = BitsToString(bits);
+            BitArray actual = a.GetBits();
 
-            Assert.AreEqual(expected, actual);
-            Console.WriteLine(expected);
-        }
-
-        private string BitsToString(BitArray bits)
-        {
-            StringBuilder str = new StringBuilder();
-
-            foreach (bool b in bits)
-                str.Append(b ? 1 : 0);
-
-            return str.ToString();
+            CollectionAssert.AreEquivalent(expected, actual);
         }
     }
 }
