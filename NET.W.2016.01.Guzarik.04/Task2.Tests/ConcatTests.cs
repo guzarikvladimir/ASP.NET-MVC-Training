@@ -28,6 +28,16 @@ namespace Task2.Tests
         }
 
         [TestMethod]
+        public void ExceptRepeating_IdenticalStringsWithRepeating_SortedStringExceptRepeating()
+        {
+            string first = "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz";
+
+            string actualString = Concat.ExceptRepeating(first, first);
+
+            Assert.AreEqual("abcdefghijklmnopqrstuvwxyz", actualString);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ExceptRepeating_NullString_ArgumentNullException()
         {
