@@ -28,7 +28,7 @@ namespace Task1
 
             for (int i = 1; i < arr.Length - 1; i++)
             {
-                if (Sum(arr, 0, i - 1) == Sum(arr, i + 1, arr.Length - 1))
+                if (Equals(Sum(arr, 0, i - 1), Sum(arr, i + 1, arr.Length - 1)))
                     return i;
             }
 
