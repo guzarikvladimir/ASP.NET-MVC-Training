@@ -19,7 +19,7 @@ namespace Task2
         /// <exception cref="ArgumentException">Происходит, если строка содержит символы, отличные от букв</exception>
         public static string ExceptRepeating(string str1, string str2)
         {
-            if (ReferenceEquals(str1, null) || ReferenceEquals(str2, null))
+            if (string.IsNullOrEmpty(str1) || string.IsNullOrEmpty(str2))
                 throw new ArgumentNullException();
 
             for (int i = 0; i < str1.Length; i++)
@@ -33,14 +33,15 @@ namespace Task2
             StringBuilder str;
 
             if (str1 == str2)
-                str = new StringBuilder(string.Concat(str1.OrderBy(x => x).ToArray()));
+                str = new StringBuilder(string.Concat(str1.OrderBy(x => x).ToArray()), str1.Length);
             else
-                str = new StringBuilder(string.Concat(string.Concat(str1, str2).OrderBy(x => x).ToArray()));
+                str = new StringBuilder(string.Concat(string.Concat(str1, str2).OrderBy(x => x).ToArray()), 
+                    str1.Length + str2.Length);
 
             int j = 0;
             while (j < str.Length - 1)
             {
-                if (str[j].Equals(str[j + 1]))
+                if (Equals(str[j], str[j + 1]))
                     str.Remove(j + 1, 1);
                 else
                     j++;

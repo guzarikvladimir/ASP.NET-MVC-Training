@@ -27,7 +27,7 @@ namespace Task1.Tests
         }
 
         [TestMethod]
-        public void ElemWithEqualSumBothSides_ArrayOfSize_ReturningIndexOfElement0()
+        public void ElemWithEqualSumBothSides_ArrayOfSize1_ReturningIndexOfElement0()
         {
             int[] array = new int[] { 1 };
 

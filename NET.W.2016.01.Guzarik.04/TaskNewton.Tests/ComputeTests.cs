@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 
 namespace TaskNewton.Tests
 {
@@ -7,19 +8,43 @@ namespace TaskNewton.Tests
     public class ComputeTests
     {
         [TestMethod]
-        public void Sqrt_PositiveIntNumer81WhereNIs4_3()
+        public void Sqrt_PositiveNumer_()
         {
             double eps = 0.001;
-            double actual = Compute.Sqrt(81, 4, eps);
+            int pow = 8;
+            double num = 89.462;
+            double actual = Compute.Sqrt(num, pow, eps);
 
-            Assert.IsTrue(actual >= 3 - eps && actual <= 3 + eps);
+            Assert.IsTrue(num <= Math.Pow(actual, pow) + eps 
+                & num >= Math.Pow(actual, pow) - eps);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Sqrt_AccuracityBiggerThan1_ArgumentOutOfRangeException()
+        {
+            Compute.Sqrt(85, 5, 2);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Sqrt_AccuracityEqualsTo0_ArgumentOutOfRangeException()
+        {
+            Compute.Sqrt(85, 5, 0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void Sqrt_NegativeNumber_ArgumentException()
+        public void Sqrt_NegativeNumbersWithEvenPower_ArgumentException()
         {
-            Compute.Sqrt(-1);
+            Compute.Sqrt(-1, 4);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Sqrt_NegativePower_ArgumentOutOfRangeException()
+        {
+            Compute.Sqrt(1, -4);
         }
     }
 }

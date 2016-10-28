@@ -36,8 +36,9 @@ namespace Task3
 
             mask <<= i;
             second <<= i;
-            second &= mask;
-            first |= second;
+
+            second |= mask;
+            first &= second;
 
             return first;
         }
