@@ -47,7 +47,7 @@ namespace Task1
             int sum = 0;
 
             for (int i = first; i <= last; i++)
-                sum += arr[i];
+                checked { sum += arr[i]; }
 
             return sum;
         }
