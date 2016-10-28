@@ -7,6 +7,16 @@ namespace Task1.Tests
     public class UnitTest1
     {
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
+        public void EElemWithEqualSumBothSides_MaxValue_OverflowException()
+        {
+            int[] array = new int[] { int.MaxValue, int.MaxValue, int.MaxValue,
+                int.MaxValue, int.MaxValue, int.MaxValue };
+
+            int expectedElem = Find.ElemWithEqualSumBothSides(array);
+        }
+
+        [TestMethod]
         public void ElemWithEqualSumBothSides_NormalArrayWhenElementExists_ReturningIndexOfElement()
         {
             int[] array = new int[] { 1, 100, 50, -51, 1, 1 };
