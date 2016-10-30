@@ -22,32 +22,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            bool flag = true;
-
-            while (flag)
-            {
-                flag = false;
-
-                for (int i = 1; i < array.Length; i++)
-                {
-                    long sumCur = 0;
-                    long sumPrev = 0;
-
-                    for (int j = 0; j < array[i].Length; j++)
-                        checked { sumCur += array[i][j]; }
-
-                    for (int j = 0; j < array[i - 1].Length; j++)
-                        checked { sumPrev += array[i - 1][j]; }
-
-                    if (sumCur < sumPrev)
-                    {
-                        flag = true;
-                        int[] tmp = array[i];
-                        array[i] = array[i - 1];
-                        array[i - 1] = tmp;
-                    }
-                }
-            }
+            Sum(array, Sum);
         }
 
         /// <summary>
@@ -60,6 +35,16 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
+            Sum(array, SumReverse);
+        }
+
+        /// <summary>
+        /// Метод, в котором собственно и реализуется алгоритм сортировки по суммам
+        /// </summary>
+        /// <param name="array">Непрямоугольный целочисленный массив</param>
+        /// <param name="res">Метод сравнения</param>
+        private static void Sum(int[][] array, Func<long, long, bool> res)
+        {
             bool flag = true;
 
             while (flag)
@@ -77,7 +62,7 @@ namespace Sort
                     for (int j = 0; j < array[i - 1].Length; j++)
                         checked { sumPrev += array[i - 1][j]; }
 
-                    if (sumCur > sumPrev)
+                    if (res(sumCur, sumPrev))
                     {
                         flag = true;
                         int[] tmp = array[i];
@@ -86,6 +71,14 @@ namespace Sort
                     }
                 }
             }
+        }
+        private static bool Sum(long sumCur, long sumPrev)
+        {
+            return sumCur < sumPrev;
+        }
+        private static bool SumReverse(long sumCur, long sumPrev)
+        {
+            return sumCur > sumPrev;
         }
 
         /// <summary>
@@ -98,34 +91,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            bool flag = true;
-
-            while (flag)
-            {
-                flag = false;
-
-                for (int i = 1; i < array.Length; i++)
-                {
-                    int maxCur = array[i][0];
-                    int maxPrev = array[i - 1][0];
-
-                    for (int j = 1; j < array[i].Length; j++)
-                        if (maxCur < array[i][j])
-                            maxCur = array[i][j];
-
-                    for (int j = 1; j < array[i - 1].Length; j++)
-                        if (maxPrev < array[i - 1][j])
-                            maxPrev = array[i - 1][j];
-
-                    if (maxCur < maxPrev)
-                    {
-                        flag = true;
-                        int[] tmp = array[i];
-                        array[i] = array[i - 1];
-                        array[i - 1] = tmp;
-                    }
-                }
-            }
+            Max(array, Max);
         }
 
         /// <summary>
@@ -138,6 +104,16 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
+            Max(array, MaxReverse);
+        }
+
+        /// <summary>
+        /// Метод, в котором собственно и реализуется алгоритм сортировки по максимальным элементам
+        /// </summary>
+        /// <param name="array">Непрямоугольный целочисленный массив</param>
+        /// <param name="res">Метод сравнения</param>
+        private static void Max(int[][] array, Func<int, int, bool> res)
+        {
             bool flag = true;
 
             while (flag)
@@ -157,7 +133,7 @@ namespace Sort
                         if (maxPrev < array[i - 1][j])
                             maxPrev = array[i - 1][j];
 
-                    if (maxCur > maxPrev)
+                    if (res(maxCur, maxPrev))
                     {
                         flag = true;
                         int[] tmp = array[i];
@@ -166,6 +142,14 @@ namespace Sort
                     }
                 }
             }
+        }
+        private static bool Max(int maxCur, int maxPrev)
+        {
+            return maxCur < maxPrev;
+        }
+        private static bool MaxReverse(int maxCur, int maxPrev)
+        {
+            return maxCur > maxPrev;
         }
 
         /// <summary>
@@ -178,34 +162,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            bool flag = true;
-
-            while (flag)
-            {
-                flag = false;
-
-                for (int i = 1; i < array.Length; i++)
-                {
-                    int minCur = array[i][0];
-                    int minPrev = array[i - 1][0];
-
-                    for (int j = 1; j < array[i].Length; j++)
-                        if (minCur > array[i][j])
-                            minCur = array[i][j];
-
-                    for (int j = 1; j < array[i - 1].Length; j++)
-                        if (minPrev > array[i - 1][j])
-                            minPrev = array[i - 1][j];
-
-                    if (minCur < minPrev)
-                    {
-                        flag = true;
-                        int[] tmp = array[i];
-                        array[i] = array[i - 1];
-                        array[i - 1] = tmp;
-                    }
-                }
-            }
+            Min(array, Min);
         }
 
         /// <summary>
@@ -218,6 +175,16 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
+            Min(array, MinReverse);
+        }
+
+        /// <summary>
+        /// Метод, в котором собственно и реализуется алгоритм сортировки по минимальным элементам
+        /// </summary>
+        /// <param name="array">Непрямоугольный целочисленный массив</param>
+        /// <param name="res">Метод сравнения</param>
+        private static void Min(int[][] array, Func<int, int, bool> res)
+        {
             bool flag = true;
 
             while (flag)
@@ -237,7 +204,7 @@ namespace Sort
                         if (minPrev > array[i - 1][j])
                             minPrev = array[i - 1][j];
 
-                    if (minCur > minPrev)
+                    if (res(minCur, minPrev))
                     {
                         flag = true;
                         int[] tmp = array[i];
@@ -246,6 +213,14 @@ namespace Sort
                     }
                 }
             }
+        }
+        private static bool Min(int minCur, int minPrev)
+        {
+            return minCur < minPrev;
+        }
+        private static bool MinReverse(int minCur, int minPrev)
+        {
+            return minCur > minPrev;
         }
     }
 }
