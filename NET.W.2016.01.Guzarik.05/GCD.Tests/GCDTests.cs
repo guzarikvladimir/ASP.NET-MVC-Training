@@ -21,7 +21,7 @@ namespace GCD.Tests
         public void Euclidean_2ArgumentsThereIsAnswer(int a, int b, int expected)
         {
             int actual = GCD.Euclidean(a, b);
-
+            Debug.WriteLine(GCD.GetLastMethodTime());
             Assert.AreEqual(expected, actual);
         }
 
