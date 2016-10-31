@@ -22,7 +22,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            Sum(array, Sum);
+            Sum(array, Compare);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            Sum(array, SumReverse);
+            Sum(array, CompareReverse);
         }
 
         /// <summary>
@@ -72,14 +72,6 @@ namespace Sort
                 }
             }
         }
-        private static bool Sum(long sumCur, long sumPrev)
-        {
-            return sumCur < sumPrev;
-        }
-        private static bool SumReverse(long sumCur, long sumPrev)
-        {
-            return sumCur > sumPrev;
-        }
 
         /// <summary>
         /// Сотрирует строки матрицы в порядке возрастания максимальных элементов строк
@@ -91,7 +83,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            Max(array, Max);
+            Max(array, Compare);
         }
 
         /// <summary>
@@ -104,7 +96,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            Max(array, MaxReverse);
+            Max(array, CompareReverse);
         }
 
         /// <summary>
@@ -112,7 +104,7 @@ namespace Sort
         /// </summary>
         /// <param name="array">Непрямоугольный целочисленный массив</param>
         /// <param name="res">Метод сравнения</param>
-        private static void Max(int[][] array, Func<int, int, bool> res)
+        private static void Max(int[][] array, Func<long, long, bool> res)
         {
             bool flag = true;
 
@@ -143,14 +135,6 @@ namespace Sort
                 }
             }
         }
-        private static bool Max(int maxCur, int maxPrev)
-        {
-            return maxCur < maxPrev;
-        }
-        private static bool MaxReverse(int maxCur, int maxPrev)
-        {
-            return maxCur > maxPrev;
-        }
 
         /// <summary>
         /// Сотрирует строки матрицы в порядке возрастания минимальнцых элементов строк
@@ -162,7 +146,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            Min(array, Min);
+            Min(array, Compare);
         }
 
         /// <summary>
@@ -175,7 +159,7 @@ namespace Sort
             if (array == null)
                 throw new ArgumentNullException();
 
-            Min(array, MinReverse);
+            Min(array, CompareReverse);
         }
 
         /// <summary>
@@ -183,7 +167,7 @@ namespace Sort
         /// </summary>
         /// <param name="array">Непрямоугольный целочисленный массив</param>
         /// <param name="res">Метод сравнения</param>
-        private static void Min(int[][] array, Func<int, int, bool> res)
+        private static void Min(int[][] array, Func<long, long, bool> res)
         {
             bool flag = true;
 
@@ -214,13 +198,14 @@ namespace Sort
                 }
             }
         }
-        private static bool Min(int minCur, int minPrev)
+
+        private static bool Compare(long elem1, long elem2)
         {
-            return minCur < minPrev;
+            return elem1 < elem2;
         }
-        private static bool MinReverse(int minCur, int minPrev)
+        private static bool CompareReverse(long elem1, long elem2)
         {
-            return minCur > minPrev;
+            return elem1 > elem2;
         }
     }
 }
