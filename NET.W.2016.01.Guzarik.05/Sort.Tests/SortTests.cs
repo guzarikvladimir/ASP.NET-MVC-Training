@@ -10,108 +10,34 @@ namespace Sort.Tests
     [TestFixture]
     public class SortTests
     {
-        [Test]
-        public void Sum_nullArray_ArgumentNullException()
+        [Test, TestCaseSource("NormalCases")]
+        public void Bubble_NormalCases(int[][] actual, int[][] expected, ICompare comp)
         {
-            int[][] actual = null;
+            Sort.Bubble(actual, comp);
 
-            Assert.Throws<ArgumentNullException>(() => Sort.Sum(actual));
+            CollectionAssert.AreEqual(expected, actual);
         }
 
-        [Test, TestCaseSource("Cases1")]
-        public void Sum(int[][] actualArray, int[][] expectedArray)
+        static object[] NormalCases = new object[]
         {
-            Sort.Sum(actualArray);
-
-            CollectionAssert.AreEqual(expectedArray, actualArray);
-        }
-
-        static object[] Cases1 =
-        {
-            new object[] { new int[][] { new int[] { 4, 5, 6, 7 }, new int[] { 3, 4, 5 }, new int[] { 7, 10, 5 }, new int[] { 1, 2, 3} },
-                new int[][] { new int[] { 1, 2, 3}, new int[] { 3, 4, 5 }, new int[] { 4, 5, 6, 7 } , new int[] { 7, 10, 5 } } },
-            new object[] { new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } },
-                new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } } }
-        };
-
-        [Test, TestCaseSource("Cases2")]
-        public void SumReverse(int[][] actualArray, int[][] expectedArray)
-        {
-            Sort.SumReverse(actualArray);
-
-            CollectionAssert.AreEqual(expectedArray, actualArray);
-        }
-
-        static object[] Cases2 =
-        {
-            new object[] { new int[][] { new int[] { 4, 5, 6, 7 }, new int[] { 3, 4, 5 }, new int[] { 7, 10, 5 } },
-                new int[][] { new int[] { 4, 5, 6, 7 }, new int[] { 7, 10, 5 } , new int[] { 3, 4, 5 } } },
-            new object[] { new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } },
-                new int[][] { new int[] { 4, 5, 6 }, new int[] { 3, 4, 5 } } }
-        };
-
-        [Test, TestCaseSource("Cases3")]
-        public void Max(int[][] actualArray, int[][] expectedArray)
-        {
-            Sort.Max(actualArray);
-
-            CollectionAssert.AreEqual(expectedArray, actualArray);
-        }
-
-        static object[] Cases3 =
-        {
-            new object[] { new int[][] { new int[] { 4, 5, 6, 7 }, new int[] { 3, 4, 5 }, new int[] { 7, 10, 5 } },
-                new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6, 7 } , new int[] { 7, 10, 5 } } },
-            new object[] { new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } },
-                new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } } }
-        };
-
-        [Test, TestCaseSource("Cases4")]
-        public void MaxReverse(int[][] actualArray, int[][] expectedArray)
-        {
-            Sort.MaxReverse(actualArray);
-
-            CollectionAssert.AreEqual(expectedArray, actualArray);
-        }
-
-        static object[] Cases4 =
-        {
-            new object[] { new int[][] { new int[] { 4, 5, 6, 7 }, new int[] { 3, 4, 5 }, new int[] { 7, 10, 5 } },
-                new int[][] { new int[] { 7, 10, 5 }, new int[] { 4, 5, 6, 7 } , new int[] { 3, 4, 5 } } },
-            new object[] { new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } },
-                new int[][] { new int[] { 4, 5, 6 }, new int[] { 3, 4, 5 } } }
-        };
-
-        [Test, TestCaseSource("Cases5")]
-        public void Min(int[][] actualArray, int[][] expectedArray)
-        {
-            Sort.Min(actualArray);
-
-            CollectionAssert.AreEqual(expectedArray, actualArray);
-        }
-
-        static object[] Cases5 =
-        {
-            new object[] { new int[][] { new int[] { 4, 5, 6, 7 }, new int[] { 3, 4, 5 }, new int[] { 7, 10, 5 } },
-                new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6, 7 } , new int[] { 7, 10, 5 } } },
-            new object[] { new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } },
-                new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } } }
-        };
-
-        [Test, TestCaseSource("Cases6")]
-        public void MinReverse(int[][] actualArray, int[][] expectedArray)
-        {
-            Sort.MinReverse(actualArray);
-
-            CollectionAssert.AreEqual(expectedArray, actualArray);
-        }
-
-        static object[] Cases6 =
-        {
-            new object[] { new int[][] { new int[] { 4, 5, 6, 7 }, new int[] { 3, 4, 5 }, new int[] { 7, 10, 5 } },
-                new int[][] { new int[] { 7, 10, 5 }, new int[] { 4, 5, 6, 7 } , new int[] { 3, 4, 5 } } },
-            new object[] { new int[][] { new int[] { 3, 4, 5 }, new int[] { 4, 5, 6 } },
-                new int[][] { new int[] { 4, 5, 6 }, new int[] { 3, 4, 5 } } }
+            new object[] { new int[][] { new int[] { 1, 2, 3 }, new int[] { 2, 3, 4, 5 }, new int[] { 1, 4 } },
+                new int[][] { new int[] { 1, 4 }, new int[] { 1, 2, 3 }, new int[] { 2, 3, 4, 5 } },
+                new OnSumUp() },
+            new object[] { new int[][] { new int[] { 1, 2, 3 }, new int[] { 2, 3, 4, 5 }, new int[] { 1, 4 } },
+                new int[][] { new int[] { 2, 3, 4, 5 }, new int[] { 1, 2, 3 }, new int[] { 1, 4 } },
+                new OnSumDown() },
+            new object[] { new int[][] { new int[] { 1, 2, 3 }, new int[] { 2, 3, 4, 5 }, new int[] { 1, 4 } },
+                new int[][] { new int[] { 1, 2, 3 }, new int[] { 1, 4 }, new int[] { 2, 3, 4 , 5 } },
+                new OnMaxUp() },
+            new object[] { new int[][] { new int[] { 1, 2, 3 }, new int[] { 2, 3, 4, 5 }, new int[] { 1, 4 } },
+                new int[][] { new int[] { 2, 3, 4, 5 }, new int[] { 1, 4 }, new int[] { 1, 2, 3 } },
+                new OnMaxDown() },
+            new object[] { new int[][] { new int[] { 1, 2, 3 }, new int[] { 2, 3, 4, 5 }, new int[] { 1, 4 } },
+                new int[][] { new int[] { 1, 2, 3 }, new int[] { 1, 4 }, new int[] { 2, 3, 4, 5 } },
+                new OnMinUp() },
+            new object[] { new int[][] { new int[] { 1, 2, 3 }, new int[] { 2, 3, 4, 5 }, new int[] { 1, 4 } },
+                new int[][] { new int[] { 2, 3, 4, 5 }, new int[] { 1, 2, 3 }, new int[] { 1, 4 } },
+                new OnMinDown() }
         };
     }
 }
