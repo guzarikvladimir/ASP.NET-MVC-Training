@@ -12,17 +12,6 @@ namespace GCD
     /// </summary>
     public static class GCD
     {
-        static Stopwatch sw = new Stopwatch();
-        
-        /// <summary>
-        /// Позволяет узнать время выполнения последнего использованного метода класса GCD
-        /// </summary>
-        /// <returns>Время выполнения последнего метода</returns>
-        public static int GetLastMethodTime()
-        {
-            return sw.Elapsed.Minutes * 60 + sw.Elapsed.Seconds;
-        }
-
         /// <summary>
         /// Находит НОД двух целых чисел методом Евклида
         /// </summary>
@@ -31,12 +20,16 @@ namespace GCD
         /// <returns>Наибольшее общее кратное двух чисел</returns>
         public static int Euclidean(int a, int b)
         {
-            sw.Reset();
-            sw.Start();
-            int gcd = EuclideanIteration(a, b);
-            sw.Stop();
+            int tmp;
 
-            return Math.Abs(gcd);
+            while (b != 0)
+            {
+                tmp = b;
+                b = a % b;
+                a = tmp;
+            }
+
+            return Math.Abs(a);
         }
 
         /// <summary>
@@ -48,13 +41,10 @@ namespace GCD
         /// <returns>Наибольшее общее кратное трех чисел</returns>
         public static int Euclidean(int a, int b, int c)
         {
-            sw.Reset();
-            sw.Start();
-            int gcd = EuclideanIteration(a, b);
-            gcd = EuclideanIteration(gcd, c);
-            sw.Stop();
+            int gcd = Euclidean(a, b);
+            gcd = Euclidean(gcd, c);
 
-            return Math.Abs(gcd);
+            return gcd;
         }
 
         /// <summary>
@@ -68,14 +58,72 @@ namespace GCD
             if (numbers.Length == 0)
                 throw new ArgumentException();
 
-            sw.Reset();
-            sw.Start();
             int gcd = numbers[0];
             for (int i = 0; i < numbers.Length - 1; i++)
-                gcd = EuclideanIteration(gcd, numbers[i + 1]);
+                gcd = Euclidean(gcd, numbers[i + 1]);
+
+            return gcd;
+        }
+
+        /// <summary>
+        /// Находит НОД двух целых чисел методом Евклида с вычислением времени выполнения
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <param name="ticks">Количество тактов</param>
+        /// <returns>Наибольшее общее кратное двух чисел</returns>
+        public static int Euclidean(int a, int b, out long ticks)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int gcd = Euclidean(a, b);
             sw.Stop();
 
-            return Math.Abs(gcd);
+            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+
+            return gcd;
+        }
+
+        /// <summary>
+        /// Находит НОД трех целых чисел методом Евклида с вычислением времени выполнения
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <param name="c">Третье число</param>
+        /// <param name="ticks">Количество тактов</param>
+        /// <returns>Наибольшее общее кратное трех чисел</returns>
+        public static int Euclidean(int a, int b, int c, out long ticks)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int gcd = Euclidean(a, b, c);
+            sw.Stop();
+
+            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+
+            return gcd;
+        }
+
+        /// <summary>
+        /// Находит НОД произвольного количества целых чисел методом Евклида с вычислением времени выполнения
+        /// </summary>
+        /// <param name="ticks">Количество тактов</param>
+        /// <param name = "numbers" > Произвольное количество целых чисел</param>
+        /// <returns>Наибольшее общее кратное чисел</returns>
+        /// <exception cref = "ArgumentException" > Происходит, если не передано ни одного аргумента</exception>
+        public static int Euclidean(out long ticks, params int[] numbers)
+        {
+            if (numbers.Length == 0)
+                throw new ArgumentException();
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int gcd = Euclidean(numbers);
+            sw.Stop();
+
+            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+
+            return gcd;
         }
 
         /// <summary>
@@ -85,78 +133,6 @@ namespace GCD
         /// <param name="b">Второе число</param>
         /// <returns>Наибольшее общее кратное двух чисел</returns>
         public static int Binary(int a, int b)
-        {
-            sw.Reset();
-            sw.Start();
-            int gcd = BinaryIteration(a, b);
-            sw.Stop();
-
-            return Math.Abs(gcd);
-        }
-
-        /// <summary>
-        /// Находит НОД трех целых чисел методом Стейна (бинарный алгоритм Евклида)
-        /// </summary>
-        /// <param name="a">Первое число</param>
-        /// <param name="b">Второе число</param>
-        /// <param name="c">Третье число</param>
-        /// <returns>Наибольшее общее кратное трех чисел</returns>
-        public static int Binary(int a, int b, int c)
-        {
-            sw.Reset();
-            sw.Start();
-            int gcd = BinaryIteration(a, b);
-            gcd = BinaryIteration(gcd, c);
-            sw.Stop();
-
-            return Math.Abs(gcd);
-        }
-
-        /// <summary>
-        /// Находит НОД произвольного количества целых чисел методом Стейна (бинарный алгоритм Евклида)
-        /// </summary>
-        /// <param name="numbers">Произвольное количество целых чисел</param>
-        /// <returns>Наибольшее общее кратное чисел</returns>
-        /// <exception cref="ArgumentException">Происходит, если не передано ни одного аргумента</exception>
-        public static int Binary(params int[] numbers)
-        {
-            if (numbers.Length == 0)
-                throw new ArgumentException();
-
-            int gcd = numbers[0];
-            for (int i = 0; i < numbers.Length - 1; i++)
-                gcd = BinaryIteration(gcd, numbers[i + 1]);
-
-            return Math.Abs(gcd);
-        }
-
-        /// <summary>
-        /// Выисляет НОД двух целых чисел методом Евклида
-        /// </summary>
-        /// <param name="a">Первое число</param>
-        /// <param name="b">Второе число</param>
-        /// <returns>Наибольшее общее кратное двух чисел</returns>
-        private static int EuclideanIteration(int a, int b)
-        {
-            int tmp;
-
-            while (b != 0)
-            {
-                tmp = b;
-                b = a % b;
-                a = tmp;
-            }
-
-            return a;
-        }
-
-        /// <summary>
-        /// Находит НОД двух целых чисел методом Стейна (бинарный алгоритм Евклида)
-        /// </summary>
-        /// <param name="a">Первое число</param>
-        /// <param name="b">Второе число</param>
-        /// <returns>Наибольшее общее кратное двух чисел</returns>
-        public static int BinaryIteration(int a, int b)
         {
             if (a == b)
                 return a;
@@ -185,6 +161,97 @@ namespace GCD
                 return Binary((a - b) >> 1, b);
 
             return Binary((b - a) >> 1, a);
+        }
+
+        /// <summary>
+        /// Находит НОД трех целых чисел методом Стейна (бинарный алгоритм Евклида)
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <param name="c">Третье число</param>
+        /// <returns>Наибольшее общее кратное трех чисел</returns>
+        public static int Binary(int a, int b, int c)
+        {
+            int gcd = Binary(a, b);
+            gcd = Binary(gcd, c);
+
+            return gcd;
+        }
+
+        /// <summary>
+        /// Находит НОД произвольного количества целых чисел методом Стейна (бинарный алгоритм Евклида)
+        /// </summary>
+        /// <param name="numbers">Произвольное количество целых чисел</param>
+        /// <returns>Наибольшее общее кратное чисел</returns>
+        /// <exception cref="ArgumentException">Происходит, если не передано ни одного аргумента</exception>
+        public static int Binary(params int[] numbers)
+        {
+            if (numbers.Length == 0)
+                throw new ArgumentException();
+
+            int gcd = numbers[0];
+            for (int i = 0; i < numbers.Length - 1; i++)
+                gcd = Binary(gcd, numbers[i + 1]);
+
+            return gcd;
+        }
+
+        /// <summary>
+        /// Находит НОД двух целых чисел методом Стейна (бинарный алгоритм Евклида) с вычислением времени выполнения
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <param name="ticks">Количество тактов</param>
+        /// <returns>Наибольшее общее кратное двух чисел</returns>
+        public static int Binary(int a, int b, out long ticks)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int gcd = Binary(a, b);
+            sw.Stop();
+
+            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+
+            return gcd;
+        }
+
+        /// <summary>
+        /// Находит НОД трех целых чисел методом Стейна (бинарный алгоритм Евклида) с вычислением времени выполнения
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <param name="c">Третье число</param>
+        /// <param name="ticks">Количество тактов</param>
+        /// <returns>Наибольшее общее кратное трех чисел</returns>
+        public static int Binary(int a, int b, int c, out long ticks)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int gcd = Binary(a, b, c);
+            sw.Stop();
+
+            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+
+            return gcd;
+        }
+
+        /// <summary>
+        /// Находит НОД произвольного количества целых чисел методом Стейна (бинарный алгоритм Евклида) с вычислением времени выполнения
+        /// </summary>
+        /// <param name="ticks">Количество тактов</param>
+        /// <param name="numbers">Произвольное количество целых чисел</param>
+        /// <returns>Наибольшее общее кратное чисел</returns>
+        /// <exception cref="ArgumentException">Происходит, если не передано ни одного аргумента</exception>
+        public static int Binary(out long ticks, params int[] numbers)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int gcd = Binary(numbers);
+            sw.Stop();
+
+            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+
+            return gcd;
         }
     }
 }
