@@ -41,6 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICompare.cs" />
+    <Compile Include="OnMaxDown.cs" />
+    <Compile Include="OnMaxUp.cs" />
+    <Compile Include="OnMinDown.cs" />
+    <Compile Include="OnMinUp.cs" />
+    <Compile Include="OnSumDown.cs" />
+    <Compile Include="OnSumUp.cs" />
     <Compile Include="Sort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
