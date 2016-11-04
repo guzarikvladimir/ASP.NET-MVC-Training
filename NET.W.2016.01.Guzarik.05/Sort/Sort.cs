@@ -17,7 +17,7 @@ namespace Sort
         /// </summary>
         /// <param name="array">Непрямоугольный целочисленный массив</param>
         /// <param name="comp"></param>
-        public static void Bubble(int[][] array, ICompare comp)
+        public static void Bubble(int[][] array, IComparer comp)
         {
             bool flag = true;
 
@@ -27,7 +27,7 @@ namespace Sort
 
                 for (int i = 0; i < array.Length - 1; i++)
                 {
-                    if (comp.CompareTo(array[i], array[i + 1]) > 0)
+                    if (comp.Compare(array[i], array[i + 1]) > 0)
                     {
                         flag = true;
                         Swap(ref array[i], ref array[i + 1]);

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Sort.Tests
     public class SortTests
     {
         [Test, TestCaseSource("NormalCases")]
-        public void Bubble_NormalCases(int[][] actual, int[][] expected, ICompare comp)
+        public void Bubble_NormalCases(int[][] actual, int[][] expected, IComparer comp)
         {
             Sort.Bubble(actual, comp);
 

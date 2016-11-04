@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sort
+namespace Sort.Tests
 {
-    public sealed class OnSumUp : ICompare
+    public sealed class OnSumUp : IComparer
     {
-        public int CompareTo(int[] array1, int[] array2)
+        public int Compare(object x, object y)
         {
+            int[] array1 = (int[])x;
+            int[] array2 = (int[])y;
+
             int sum1 = 0;
             int sum2 = 0;
 

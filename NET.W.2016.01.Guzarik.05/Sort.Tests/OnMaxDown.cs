@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sort
+namespace Sort.Tests
 {
-    public sealed class OnMaxUp : ICompare
+    public sealed class OnMaxDown : IComparer
     {
-        public int CompareTo(int[] array1, int[] array2)
+        public int Compare(object x, object y)
         {
+            int[] array1 = (int[])x;
+            int[] array2 = (int[])y;
+
             int max1 = int.MinValue;
             int max2 = int.MinValue;
 
@@ -21,7 +25,7 @@ namespace Sort
                 if (max2 < array2[i])
                     max2 = array2[i];
 
-            return max1 - max2;
+            return max2 - max1;
         }
     }
 }
