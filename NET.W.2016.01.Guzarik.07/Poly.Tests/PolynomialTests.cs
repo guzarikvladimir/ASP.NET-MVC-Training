@@ -115,6 +115,17 @@ namespace Poly.Tests
             Assert.True(expected.Equals(actual));
         }
 
+        [TestCase(20)]
+        [TestCase(-1)]
+        public void Indexer_OutOfRange_ArgumentOutOfRangeException(int index)
+        {
+            Polynomial a = GetPolynomial1();
+
+            double actual;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => actual = a[index]);
+        }
+
         static object[] AddCases = new object[]
         {
             new object[] { new Polynomial(1.1, -2.2, 3.3, 0, 4.4), new Polynomial(4.6, 2.5, -5.1, 4.3) ,

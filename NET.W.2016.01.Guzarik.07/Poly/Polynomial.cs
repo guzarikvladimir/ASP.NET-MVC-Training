@@ -40,7 +40,7 @@ namespace Poly
         {
             get
             {
-                if (index > polynomial.Length)
+                if ( index < 0 || index > polynomial.Length)
                     throw new ArgumentOutOfRangeException();
 
                 return polynomial[index];
