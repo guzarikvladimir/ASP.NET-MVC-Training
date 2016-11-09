@@ -25,9 +25,20 @@ namespace Task1.Tests
             Assert.AreEqual(expected, cust.ToString(features));
         }
 
-        [TestCase("1,000,000.00")]
-        public void ToString_CustomFormatRevenue(string expected)
+        [Test]
+        public void ToString_BuiltInFormatRevenue()
         {
+            const string expected = "1 000 000,00";
+            var cust = GetCustomer();
+
+            //Assert.IsTrue(expected.Equals(cust.ToString(null, "N", Feature.Revenue), StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(expected, cust.ToString(null, "N", Feature.Revenue));
+        }
+
+        [Test]
+        public void ToString_CustomFormatRevenue()
+        {
+            const string expected = "1,000,000.00";
             var cust = GetCustomer();
 
             Assert.AreEqual(expected, string.Format(new CustomFormat(),
