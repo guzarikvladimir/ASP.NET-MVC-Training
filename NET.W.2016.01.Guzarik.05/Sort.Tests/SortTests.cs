@@ -12,11 +12,20 @@ namespace Sort.Tests
     public class SortTests
     {
         [Test, TestCaseSource("NormalCases")]
-        public void Bubble_NormalCases(int[][] actual, int[][] expected, IComparer comp)
+        public void Bubble_NormalCases(int[][] actual, int[][] expected, IComparer<int[]> comp)
         {
-            Sort.Bubble(actual, comp);
+            //Sort.Bubble(actual, comp);
+            Sort.Bubble(actual, SomeMethod);
 
             CollectionAssert.AreEqual(expected, actual);
+        }
+
+        private static int SomeMethod(int[] x, int[] y)
+        {
+            var min1 = x.Concat(new[] { int.MaxValue }).Min();
+            var min2 = y.Concat(new[] { int.MaxValue }).Min();
+
+            return min2 - min1;
         }
 
         static object[] NormalCases = new object[]

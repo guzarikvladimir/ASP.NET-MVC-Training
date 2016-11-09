@@ -7,23 +7,12 @@ using System.Threading.Tasks;
 
 namespace Sort.Tests
 {
-    public sealed class OnMaxUp : IComparer
+    public sealed class OnMaxUp : IComparer<int[]>
     {
-        public int Compare(object x, object y)
+        public int Compare(int[] x, int[] y)
         {
-            int[] array1 = (int[])x;
-            int[] array2 = (int[])y;
-
-            int max1 = int.MinValue;
-            int max2 = int.MinValue;
-
-            for (int i = 0; i < array1.Length; i++)
-                if (max1 < array1[i])
-                    max1 = array1[i];
-
-            for (int i = 0; i < array2.Length; i++)
-                if (max2 < array2[i])
-                    max2 = array2[i];
+            var max1 = x.Concat(new[] {int.MinValue}).Max();
+            var max2 = y.Concat(new[] {int.MinValue}).Max();
 
             return max1 - max2;
         }

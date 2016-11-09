@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sort
 {
@@ -16,34 +12,39 @@ namespace Sort
         /// Сортировка целочисленного непрямоугольного массива пузырьком заданным образом
         /// </summary>
         /// <param name="array">Непрямоугольный целочисленный массив</param>
-        /// <param name="comp"></param>
-        public static void Bubble(int[][] array, IComparer comp)
+        /// <param name="comp">Класс, реализующий метод сравнения</param>
+        public static void Bubble(int[][] array, IComparer<int[]> comp)
         {
-            bool flag = true;
+            var flag = true;
 
             while (flag)
             {
                 flag = false;
 
-                for (int i = 0; i < array.Length - 1; i++)
+                for (var i = 0; i < array.Length - 1; i++)
                 {
-                    if (comp.Compare(array[i], array[i + 1]) > 0)
-                    {
-                        flag = true;
-                        Swap(ref array[i], ref array[i + 1]);
-                    }
+                    if (comp.Compare(array[i], array[i + 1]) <= 0) continue;
+                    flag = true;
+                    Swap(ref array[i], ref array[i + 1]);
                 }
             }
+        }
+        /// <summary>
+        /// Сортировка целочисленного непрямоугольного массива пузырьком заданным образом
+        /// </summary>
+        /// <param name="array">Непрямоугольный целочисленный массив</param>
+        /// <param name="comp">Метод, реализующий логику сортировки</param>
+        public static void Bubble(int[][] array, Comparison<int[]> comp)
+        {
+            
         }
 
         /// <summary>
         /// Метод, осуществляющий обмен элементов
         /// </summary>
-        /// <param name="a">Первый целочисленный массив</param>
-        /// <param name="b">Второй целочисленный массив</param>
         private static void Swap(ref int[] a, ref int[] b)
         {
-            int[] tmp = a;
+            var tmp = a;
             a = b;
             b = tmp;
         }

@@ -7,21 +7,18 @@ using System.Threading.Tasks;
 
 namespace Sort.Tests
 {
-    public sealed class OnSumUp : IComparer
+    public sealed class OnSumUp : IComparer<int[]>
     {
-        public int Compare(object x, object y)
+        public int Compare(int[] x, int[] y)
         {
-            int[] array1 = (int[])x;
-            int[] array2 = (int[])y;
+            var sum1 = 0;
+            var sum2 = 0;
 
-            int sum1 = 0;
-            int sum2 = 0;
+            foreach (var t in x)
+                checked { sum1 += t; }
 
-            for (int i = 0; i < array1.Length; i++)
-                checked { sum1 += array1[i]; }
-
-            for (int i = 0; i < array2.Length; i++)
-                checked { sum2 += array2[i]; }
+            foreach (var t in y)
+                checked { sum2 += t; }
 
             return sum1 - sum2;
         }

@@ -1,15 +1,11 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GCD.Tests
 {
     [TestFixture]
-    public class GCDTests
+    public class GcdTests
     {
         [TestCase(1, 10, 1)]
         [TestCase(0, 0, 0)]
@@ -18,7 +14,7 @@ namespace GCD.Tests
         [TestCase(-5, 10, 5)]
         public void Euclidean_2Arguments_ThereIsAnswer(int a, int b, int expected)
         {
-            int actual = GCD.Euclidean(a, b);
+            var actual = Gcd.Euclidean(a, b);
             
             Assert.AreEqual(expected, actual);
         }
@@ -30,7 +26,7 @@ namespace GCD.Tests
         public void Euclidean_3Arguments_ThereIsAnswer(int a, int b, int c, int expected)
         {
             long ticks;
-            int actual = GCD.Euclidean(a, b, c, out ticks);
+            var actual = Gcd.Euclidean(a, b, c, out ticks);
 
             Debug.WriteLine(ticks);
 
@@ -41,13 +37,13 @@ namespace GCD.Tests
         [TestCase(1, 1, 2, 3, 4, 0)]
         public void Euclidean_AnyNumberOfNumbers(int expected, params int[] numbers)
         {
-            Assert.AreEqual(expected, GCD.Euclidean(numbers));
+            Assert.AreEqual(expected, Gcd.Euclidean(numbers));
         }
 
         [TestCase]
         public void Euclidean_NoArguments_ArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => GCD.Euclidean());
+            Assert.Throws<ArgumentException>(() => Gcd.Euclidean());
         }
 
         [TestCase(1, 10, 1)]
@@ -57,7 +53,7 @@ namespace GCD.Tests
         [TestCase(-5, 10, 5)]
         public void Binary_2ArgumentsThereIsAnswer(int a, int b, int expected)
         {
-            int actual = GCD.Binary(a, b);
+            var actual = Gcd.Binary(a, b);
 
             Assert.AreEqual(expected, actual);
         }
@@ -69,7 +65,7 @@ namespace GCD.Tests
         public void Binary_3ArgumentsThereIsAnswer(int a, int b, int c, int expected)
         {
             long ticks;
-            int actual = GCD.Binary(a, b, c, out ticks);
+            var actual = Gcd.Binary(a, b, c, out ticks);
 
             Debug.WriteLine(ticks);
 
@@ -80,13 +76,13 @@ namespace GCD.Tests
         [TestCase(1, 1, 2, 3, 4, 0)]
         public void Binary_AnyNumberOfNumbers(int expected, params int[] numbers)
         {
-            Assert.AreEqual(expected, GCD.Binary(numbers));
+            Assert.AreEqual(expected, Gcd.Binary(numbers));
         }
 
         [TestCase]
         public void Binary_NoArguments_ArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => GCD.Binary());
+            Assert.Throws<ArgumentException>(() => Gcd.Binary());
         }
     }
 }

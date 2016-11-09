@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GCD
 {
     /// <summary>
     /// Класс для нахождение наибольшего общего делителя целых чисел
     /// </summary>
-    public static class GCD
+    public static class Gcd
     {
         /// <summary>
         /// Находит НОД двух целых чисел методом Евклида
@@ -20,11 +16,9 @@ namespace GCD
         /// <returns>Наибольшее общее кратное двух чисел</returns>
         public static int Euclidean(int a, int b)
         {
-            int tmp;
-
             while (b != 0)
             {
-                tmp = b;
+                var tmp = b;
                 b = a % b;
                 a = tmp;
             }
@@ -41,7 +35,7 @@ namespace GCD
         /// <returns>Наибольшее общее кратное трех чисел</returns>
         public static int Euclidean(int a, int b, int c)
         {
-            int gcd = Euclidean(a, b);
+            var gcd = Euclidean(a, b);
             gcd = Euclidean(gcd, c);
 
             return gcd;
@@ -58,8 +52,8 @@ namespace GCD
             if (numbers.Length == 0)
                 throw new ArgumentException();
 
-            int gcd = numbers[0];
-            for (int i = 0; i < numbers.Length - 1; i++)
+            var gcd = numbers[0];
+            for (var i = 0; i < numbers.Length - 1; i++)
                 gcd = Euclidean(gcd, numbers[i + 1]);
 
             return gcd;
@@ -74,12 +68,12 @@ namespace GCD
         /// <returns>Наибольшее общее кратное двух чисел</returns>
         public static int Euclidean(int a, int b, out long ticks)
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
-            int gcd = Euclidean(a, b);
+            var gcd = Euclidean(a, b);
             sw.Stop();
 
-            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+            ticks = sw.Elapsed.Ticks;
 
             return gcd;
         }
@@ -94,12 +88,12 @@ namespace GCD
         /// <returns>Наибольшее общее кратное трех чисел</returns>
         public static int Euclidean(int a, int b, int c, out long ticks)
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
-            int gcd = Euclidean(a, b, c);
+            var gcd = Euclidean(a, b, c);
             sw.Stop();
 
-            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+            ticks = sw.Elapsed.Ticks;
 
             return gcd;
         }
@@ -116,12 +110,12 @@ namespace GCD
             if (numbers.Length == 0)
                 throw new ArgumentException();
 
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
-            int gcd = Euclidean(numbers);
+            var gcd = Euclidean(numbers);
             sw.Stop();
 
-            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+            ticks = sw.Elapsed.Ticks;
 
             return gcd;
         }
@@ -172,7 +166,7 @@ namespace GCD
         /// <returns>Наибольшее общее кратное трех чисел</returns>
         public static int Binary(int a, int b, int c)
         {
-            int gcd = Binary(a, b);
+            var gcd = Binary(a, b);
             gcd = Binary(gcd, c);
 
             return gcd;
@@ -189,8 +183,8 @@ namespace GCD
             if (numbers.Length == 0)
                 throw new ArgumentException();
 
-            int gcd = numbers[0];
-            for (int i = 0; i < numbers.Length - 1; i++)
+            var gcd = numbers[0];
+            for (var i = 0; i < numbers.Length - 1; i++)
                 gcd = Binary(gcd, numbers[i + 1]);
 
             return gcd;
@@ -205,12 +199,12 @@ namespace GCD
         /// <returns>Наибольшее общее кратное двух чисел</returns>
         public static int Binary(int a, int b, out long ticks)
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
-            int gcd = Binary(a, b);
+            var gcd = Binary(a, b);
             sw.Stop();
 
-            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+            ticks = sw.Elapsed.Ticks;
 
             return gcd;
         }
@@ -225,12 +219,12 @@ namespace GCD
         /// <returns>Наибольшее общее кратное трех чисел</returns>
         public static int Binary(int a, int b, int c, out long ticks)
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
-            int gcd = Binary(a, b, c);
+            var gcd = Binary(a, b, c);
             sw.Stop();
 
-            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+            ticks = sw.Elapsed.Ticks;
 
             return gcd;
         }
@@ -244,12 +238,12 @@ namespace GCD
         /// <exception cref="ArgumentException">Происходит, если не передано ни одного аргумента</exception>
         public static int Binary(out long ticks, params int[] numbers)
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
-            int gcd = Binary(numbers);
+            var gcd = Binary(numbers);
             sw.Stop();
 
-            ticks = ((TimeSpan)sw.Elapsed).Ticks;
+            ticks = sw.Elapsed.Ticks;
 
             return gcd;
         }
