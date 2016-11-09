@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Text;
 
 namespace Poly
@@ -10,7 +11,10 @@ namespace Poly
     {
         private readonly double[] polynomial = { };
 
-        public static double Epsilon { get; private set; } = 0.00001;
+        /// <summary>
+        /// Точность
+        /// </summary>
+        public static double Epsilon { get; private set; }
 
         /// <summary>
         /// Конструктор из некоторого количества вещественных чисел
@@ -20,15 +24,16 @@ namespace Poly
             polynomial = new double[coefficients.Length];
             Array.Copy(coefficients, polynomial, coefficients.Length);
         }
-
         /// <summary>
         /// Конструктор на основе другого полинома
         /// </summary>
         public Polynomial(Polynomial polynomial) : this(polynomial.polynomial) { }
-
+        /// <summary>
+        /// Конструктор, устанавливающий точность
+        /// </summary>
         static Polynomial()
         {
-            //Epsilon = double.Parse(System.Configuration.ConfigurationManager.AppSettings["epsilon"]);
+            Epsilon = Properties.Settings.Default.epsilon;
         }
 
         /// <summary>
@@ -99,7 +104,6 @@ namespace Poly
 
             return true;
         }
-
         /// <summary>
         /// Сравнивает полиномы
         /// </summary>
@@ -136,32 +140,26 @@ namespace Poly
         /// Складывает коэффициенты двух полиномов по соответствующим степеням x
         /// </summary>
         public static Polynomial Add(Polynomial lhs, Polynomial rhs) => lhs + rhs;
-
         /// <summary>
         /// Складывает коэффициенты полинома с числом
         /// </summary>
         public static Polynomial Add(Polynomial lhs, double rhs) => lhs + rhs;
-
         /// <summary>
         /// Вычитает коэффициенты одного полинома из коэффициентов другого полинома
         /// </summary>
         public static Polynomial Subtract(Polynomial lhs, Polynomial rhs) => lhs - rhs;
-
         /// <summary>
         /// Вычитает число из каждого элемента многочлена
         /// </summary>
         public static Polynomial Subtract(Polynomial lhs, double rhs) => lhs - rhs;
-
         /// <summary>
         /// Инкрементирует каждый элемент полинома
         /// </summary>
         public Polynomial Increment() => this + 1;
-
         /// <summary>
         /// Декрементирует каждый элемент полинома
         /// </summary>
         public Polynomial Decrement() => this - 1;
-
         /// <summary>
         /// Инвертирует знак элементов полинома
         /// </summary>
@@ -181,7 +179,6 @@ namespace Poly
 
             return lhs;
         }
-
         /// <summary>
         /// Складывает коэффициенты двух полиномов по соответствующим степеням x
         /// </summary>
@@ -199,7 +196,6 @@ namespace Poly
 
             return poly;
         }
-
         /// <summary>
         /// Складывает коэффициенты полинома с числом
         /// </summary>
@@ -212,37 +208,30 @@ namespace Poly
 
             return lhs;
         }
-
         /// <summary>
         /// Складывает коэффициенты полинома с числом
         /// </summary>
         public static Polynomial operator +(double lhs, Polynomial rhs) => rhs + lhs;
-
         /// <summary>
         /// Вычитает коэффициенты одного полинома из коэффициентов другого полинома
         /// </summary>
         public static Polynomial operator -(Polynomial lhs, Polynomial rhs) => lhs + (-rhs);
-
         /// <summary>
         /// Вычитает число из каждого элемента многочлена
         /// </summary>
         public static Polynomial operator -(Polynomial lhs, double rhs) => lhs + (-rhs);
-
         /// <summary>
         /// Вычитает каждый элемент полинома из числа
         /// </summary>
         public static Polynomial operator -(double lhs, Polynomial rhs) => (-rhs) + lhs;
-
         /// <summary>
         /// Инкрементирует каждый элемент полинома
         /// </summary>
         public static Polynomial operator ++(Polynomial lhs) => lhs + 1;
-
         /// <summary>
         /// Декрементирует каждый элемент полинома
         /// </summary>
         public static Polynomial operator --(Polynomial lhs) => lhs - 1;
-
         /// <summary>
         /// Сравнивает на равенство полиномов
         /// </summary>
@@ -253,7 +242,6 @@ namespace Poly
 
             return lhs.Equals(rhs);
         }
-
         /// <summary>
         /// Сравнивает на неравенство двух полиномов
         /// </summary>

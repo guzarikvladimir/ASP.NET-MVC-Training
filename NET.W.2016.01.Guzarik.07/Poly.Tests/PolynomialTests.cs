@@ -6,13 +6,13 @@ namespace Poly.Tests
     [TestFixture]
     public class PolynomialTests
     {
-        private Polynomial GetPolynomial1() => new Polynomial(1.1, -2.2, 3.3, -4.4, 0, 6.6);
-        private Polynomial GetPolynomial2() => new Polynomial(0, 0, 0, 0, 0, 0);
+        private static Polynomial Polynomial1 => new Polynomial(1.1, -2.2, 3.3, -4.4, 0, 6.6);
+        private static Polynomial GetPolynomial2() => new Polynomial(0, 0, 0, 0, 0, 0);
 
         [Test]
         public void ToString_NormalCase()
         {
-            Polynomial a = GetPolynomial1();
+            Polynomial a = Polynomial1;
             string expected = "6,6x^5-4,4x^3+3,3x^2-2,2x+1,1";
 
             string actual = a.ToString();
@@ -23,8 +23,8 @@ namespace Poly.Tests
         [Test]
         public void Equals_EqualPolynomials_True()
         {
-            Polynomial a = GetPolynomial1();
-            Polynomial b = GetPolynomial1();
+            Polynomial a = Polynomial1;
+            Polynomial b = Polynomial1;
 
             Assert.True(a.Equals(b));
         }
@@ -32,7 +32,7 @@ namespace Poly.Tests
         [Test]
         public void Equals_Null_False()
         {
-            Polynomial a = GetPolynomial1();
+            Polynomial a = Polynomial1;
 
             Assert.False(a.Equals(null));
         }
@@ -40,7 +40,7 @@ namespace Poly.Tests
         [Test]
         public void Equals_DifferentPolynomials_False()
         {
-            Polynomial a = GetPolynomial1();
+            Polynomial a = Polynomial1;
             Polynomial b = GetPolynomial2();
 
             Assert.False(a.Equals(b));
@@ -49,8 +49,8 @@ namespace Poly.Tests
         [Test]
         public void GetHashCode_EqualPolynomials_EqualHash()
         {
-            Polynomial a = GetPolynomial1();
-            Polynomial b = GetPolynomial1();
+            Polynomial a = Polynomial1;
+            Polynomial b = Polynomial1;
 
             Console.WriteLine($"{a.GetHashCode()}\t{b.GetHashCode()}");
             Assert.AreEqual(a.GetHashCode(), b.GetHashCode());
@@ -59,7 +59,7 @@ namespace Poly.Tests
         [Test]
         public void GetHashCode_DifferentPolynomes_DifferentHash()
         {
-            Polynomial a = GetPolynomial1();
+            Polynomial a = Polynomial1;
             Polynomial b = GetPolynomial2();
 
             Console.WriteLine($"{a.GetHashCode()}\t{b.GetHashCode()}");
@@ -114,7 +114,7 @@ namespace Poly.Tests
         [TestCase(-1)]
         public void Indexer_OutOfRange_ArgumentOutOfRangeException(int index)
         {
-            var a = GetPolynomial1();
+            var a = Polynomial1;
 
             Assert.Throws<ArgumentOutOfRangeException>(() => {
                 var d = a[index];
