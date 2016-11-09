@@ -9,43 +9,32 @@ namespace Task1.Tests
         [Test]
         public void ToString_AllFieldsWithStandardFormat()
         {
-            Customer cust = GetCustomer();
-            string expected = "Jeffrey Richter, 1000000, +14255550100";
+            var cust = GetCustomer();
+            const string expected = "Jeffrey Richter, +1 (425) 555-0100, 1000000";
 
-            string actual = cust.ToString();
+            var actual = cust.ToString();
 
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("Jeffrey Richter, 1000000", true, true, false)]
-        [TestCase("1000000", false, true, false)]
-        public void ToString_DifferentFieldsWithStandardFormat(string expected, 
-            bool name, bool revenue, bool phone)
+        [TestCase("Jeffrey Richter, 1000000", Feature.Name, Feature.Revenue)]
+        [TestCase("1000000", Feature.Revenue)]
+        public void ToString_DifferentFieldsWithStandardFormat(string expected, params Feature[] features)
         {
-            Customer cust = GetCustomer();
-
-            Assert.AreEqual(expected, cust.ToString(name, revenue, phone));
-        }
-
-        [TestCase("+1 (425) 555-0100")]
-        public void ToString_CustomFormatPhone(string expected)
-        {
-            Customer cust = GetCustomer();
-
-            Assert.AreEqual(expected, String.Format(new CustomFormat(), 
-                "{0:PHONE1}", cust.ContactPhone));
+            var cust = GetCustomer();
+            Assert.AreEqual(expected, cust.ToString(features));
         }
 
         [TestCase("1,000,000.00")]
         public void ToString_CustomFormatRevenue(string expected)
         {
-            Customer cust = GetCustomer();
+            var cust = GetCustomer();
 
-            Assert.AreEqual(expected, String.Format(new CustomFormat(),
+            Assert.AreEqual(expected, string.Format(new CustomFormat(),
                 "{0:REV1}", cust.Revenue));
         }
 
-        private Customer GetCustomer() => new Customer("Jeffrey Richter", 
+        private static Customer GetCustomer() => new Customer("Jeffrey Richter", 
             1000000, "+14255550100");
     }
 }
