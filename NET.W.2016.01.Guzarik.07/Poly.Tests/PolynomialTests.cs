@@ -1,10 +1,5 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Poly.Tests
 {
@@ -71,23 +66,23 @@ namespace Poly.Tests
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
 
-        [Test, TestCaseSource("AddCases")]
+        [Test, TestCaseSource(nameof(AddCases))]
         public void Add_(dynamic a, dynamic b, Polynomial expected)
         {
             Polynomial actual = a + b;
             //Polynomial actual = Polynomial.Add(a, b);
 
-            Console.WriteLine($"{expected.ToString()}\t{actual.ToString()}");
+            Console.WriteLine($"{expected}\t{actual}");
             Assert.True(expected.Equals(actual));
         }
 
-        [Test, TestCaseSource("SubCases")]
+        [Test, TestCaseSource(nameof(SubCases))]
         public void Subtract_(dynamic a, dynamic b, Polynomial expected)
         {
             Polynomial actual = a - b;
             //Polynomial actual = Polynomial.Subtract(a, b);
 
-            Console.WriteLine($"{expected.ToString()}\t{actual.ToString()}");
+            Console.WriteLine($"{expected}\t{actual}");
             Assert.True(expected.Equals(actual));
         }
 
@@ -119,11 +114,11 @@ namespace Poly.Tests
         [TestCase(-1)]
         public void Indexer_OutOfRange_ArgumentOutOfRangeException(int index)
         {
-            Polynomial a = GetPolynomial1();
+            var a = GetPolynomial1();
 
-            double actual;
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => actual = a[index]);
+            Assert.Throws<ArgumentOutOfRangeException>(() => {
+                var d = a[index];
+            });
         }
 
         static object[] AddCases = new object[]

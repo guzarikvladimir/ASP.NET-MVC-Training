@@ -8,7 +8,7 @@ namespace Poly
     /// </summary>
     public sealed class Polynomial : ICloneable, IEquatable<Polynomial>
     {
-        private double[] polynomial = { };
+        private readonly double[] polynomial = { };
 
         public static double Epsilon { get; private set; } = 0.00001;
 
@@ -56,16 +56,14 @@ namespace Poly
         /// </summary>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
-            string powerX;
-            string sign;
-
-            for (int i = polynomial.Length - 1; i >= 0; i--)
+            for (var i = polynomial.Length - 1; i >= 0; i--)
             {
                 if (this[i] == 0)
                     continue;
 
+                string powerX;
                 if (i > 1)
                     powerX = $"x^{i}";
                 else if (i == 1)
@@ -73,11 +71,9 @@ namespace Poly
                 else
                     powerX = "";
 
+                string sign;
                 if (this[i] > 0)
-                    if (i == polynomial.Length - 1)
-                        sign = string.Empty;
-                    else
-                        sign = "+";
+                    sign = i == polynomial.Length - 1 ? string.Empty : "+";
                 else
                     sign = string.Empty;
 
@@ -97,7 +93,7 @@ namespace Poly
 
             if (polynomial.Length != poly.polynomial.Length) return false;
 
-            for (int i = 0; i < polynomial.Length; i++)
+            for (var i = 0; i < polynomial.Length; i++)
                 if (this[i] - Epsilon > poly[i] || this[i] + Epsilon < poly[i])
                     return false;
 
@@ -112,9 +108,7 @@ namespace Poly
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
 
-            if (obj.GetType() != GetType()) return false;
-
-            return Equals((Polynomial)obj);
+            return obj.GetType() == GetType() && Equals((Polynomial)obj);
         }
 
         /// <summary>
@@ -123,9 +117,9 @@ namespace Poly
         /// <returns>Hash объекта</returns>
         public override int GetHashCode()
         {
-            int hash = 0;
+            var hash = 0;
 
-            for (int i = 0; i < polynomial.Length; i++)
+            for (var i = 0; i < polynomial.Length; i++)
                 hash += this[i].GetHashCode();
 
             return hash ^ polynomial.Length;
@@ -182,7 +176,7 @@ namespace Poly
         /// </summary>
         public static Polynomial operator -(Polynomial lhs)
         {
-            for (int i = 0; i < lhs.polynomial.Length; i++)
+            for (var i = 0; i < lhs.polynomial.Length; i++)
                 lhs[i] = -lhs[i];
 
             return lhs;
@@ -196,11 +190,11 @@ namespace Poly
             if (ReferenceEquals(lhs, null)) throw new ArgumentNullException();
             if (ReferenceEquals(rhs, null)) throw new ArgumentNullException();
 
-            int minLength = Math.Min(lhs.polynomial.Length, rhs.polynomial.Length);
-            Polynomial poly = lhs.polynomial.Length > rhs.polynomial.Length ? 
+            var minLength = Math.Min(lhs.polynomial.Length, rhs.polynomial.Length);
+            var poly = lhs.polynomial.Length > rhs.polynomial.Length ? 
                 new Polynomial(lhs) : new Polynomial(rhs);
 
-            for (int i = 0; i < minLength; i++)
+            for (var i = 0; i < minLength; i++)
                 poly[i] += lhs.polynomial.Length > rhs.polynomial.Length ? rhs[i] : lhs[i];
 
             return poly;
@@ -213,7 +207,7 @@ namespace Poly
         {
             if (ReferenceEquals(lhs, null)) throw new ArgumentNullException();
 
-            for (int i = 0; i < lhs.polynomial.Length; i++)
+            for (var i = 0; i < lhs.polynomial.Length; i++)
                 lhs[i] += rhs;
 
             return lhs;
@@ -268,7 +262,7 @@ namespace Poly
         {
             if (ReferenceEquals(lhs, rhs)) return false;
 
-            return !lhs.Equals(rhs);
+            return lhs != null && !lhs.Equals(rhs);
         }
         
         #endregion
