@@ -11,10 +11,10 @@ namespace TaskNewton.Tests
         public void Sqrt_PositiveNumer_()
         {
             double eps = 0.001;
-            int pow = 8;
-            double num = 89.462;
+            int pow = 11;
+            double num = -323;
             double actual = Compute.Sqrt(num, pow, eps);
-
+            Debug.WriteLine(actual);
             Assert.IsTrue(num <= Math.Pow(actual, pow) + eps 
                 & num >= Math.Pow(actual, pow) - eps);
         }
