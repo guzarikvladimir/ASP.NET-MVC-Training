@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sort
 {
     /// <summary>
     /// Класс, содержащий различные сортировки непрямоугольного целочисленного массива
     /// </summary>
-    public static class Sort
+    public static class Sort2
     {
         /// <summary>
         /// Сортировка целочисленного непрямоугольного массива пузырьком заданным образом
@@ -21,19 +24,7 @@ namespace Sort
             if (ReferenceEquals(array, null))
                 throw new ArgumentNullException();
 
-            var flag = true;
-
-            while (flag)
-            {
-                flag = false;
-
-                for (var i = 0; i < array.Length - 1; i++)
-                {
-                    if (comp.Compare(array[i], array[i + 1]) <= 0) continue;
-                    flag = true;
-                    Swap(ref array[i], ref array[i + 1]);
-                }
-            }
+            Bubble(array, comp.Compare);
         }
         /// <summary>
         /// Сортировка целочисленного непрямоугольного массива пузырьком заданным образом
@@ -48,21 +39,18 @@ namespace Sort
             if (ReferenceEquals(array, null))
                 throw new ArgumentNullException();
 
-            Bubble(array, new ComparisonAdapter(comp));
-        }
+            var flag = true;
 
-        private class ComparisonAdapter : IComparer<int[]>
-        {
-            private readonly Comparison<int[]> _comp;
-
-            public ComparisonAdapter(Comparison<int[]> comp)
+            while (flag)
             {
-                _comp = comp;
-            }
+                flag = false;
 
-            public int Compare(int[] x, int[] y)
-            {
-                return _comp.Invoke(x, y);
+                for (var i = 0; i < array.Length - 1; i++)
+                {
+                    if (comp(array[i], array[i + 1]) <= 0) continue;
+                    flag = true;
+                    Swap(ref array[i], ref array[i + 1]);
+                }
             }
         }
 
