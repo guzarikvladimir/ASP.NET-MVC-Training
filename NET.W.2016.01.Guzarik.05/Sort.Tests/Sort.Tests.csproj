@@ -50,6 +50,7 @@
     <Compile Include="OnMinUp.cs" />
     <Compile Include="OnSumDown.cs" />
     <Compile Include="OnSumUp.cs" />
+    <Compile Include="Sort2Tests.cs" />
     <Compile Include="SortTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
