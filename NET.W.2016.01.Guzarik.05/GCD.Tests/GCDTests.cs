@@ -82,7 +82,7 @@ namespace GCD.Tests
         [TestCase]
         public void Binary_NoArguments_ArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => Gcd.Binary());
+            Assert.Throws<ArgumentNullException>(() => Gcd.Binary(null));
         }
     }
 }
