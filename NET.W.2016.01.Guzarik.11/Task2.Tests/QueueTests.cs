@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Task2.Tests
@@ -18,7 +19,7 @@ namespace Task2.Tests
             var queue = new Queue<int>();
 
             // act
-            for (int i = 0; i < times; i++)
+            for (var i = 0; i < times; i++)
             {
                 queue.Enqueue(i);
             }

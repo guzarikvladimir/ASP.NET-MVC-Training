@@ -15,7 +15,7 @@ namespace Task2
         private int _capacity;
         private readonly int _defaultCapacity = 10;
         private readonly float _growFactory = 1.5f;
-
+        
         /// <summary>
         /// Returns actual count of elements in Queue
         /// </summary>
@@ -111,9 +111,9 @@ namespace Task2
         /// </summary>
         public void Enqueue(T elem)
         {
-            if (Equals(_collection.Length, _capacity))
+            if (_collection.Length == _capacity)
             {
-                var newCollection = new T[(int)(_capacity*_growFactory)];
+                var newCollection = new T[(int) (_capacity*_growFactory)];
                 Array.Copy(_collection, newCollection, _collection.Length);
                 _collection = newCollection;
                 _capacity = (int)(_capacity * _growFactory);
