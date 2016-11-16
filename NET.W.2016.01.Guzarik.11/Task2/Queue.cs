@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Task2
 {
@@ -12,14 +13,13 @@ namespace Task2
         private T[] _collection;
         private int _head;
         private int _tail;
-        private int _capacity;
         private readonly int _defaultCapacity = 10;
         private readonly float _growFactory = 1.5f;
-        
+
         /// <summary>
         /// Returns actual count of elements in Queue
         /// </summary>
-        public int Count => _collection.Length;
+        public int Count { get; private set; }
 
         #region Constructors
 
@@ -29,7 +29,6 @@ namespace Task2
         public Queue()
         {
             _collection = new T[_defaultCapacity];
-            _capacity = _defaultCapacity;
         }
 
         /// <summary>
@@ -44,7 +43,6 @@ namespace Task2
             }
 
             _collection = new T[capacity];
-            _capacity = capacity;
         }
 
         /// <summary>
@@ -65,23 +63,22 @@ namespace Task2
 
             _collection = new T[capacity];
             _growFactory = growFactory;
-            _capacity = capacity;
         }
 
         /// <summary>
         /// Initializes a new Queue with elements from the col. The capacity of queue is equal to the number of elements in col. Grow factory is default
         /// </summary>
         /// <exception cref="ArgumentNullException">Col is null</exception>
-        public Queue(ICollection<T> col)
+        public Queue(IEnumerable<T> collection)
         {
-            if (ReferenceEquals(col, null))
+            if (ReferenceEquals(collection, null))
             {
-                throw new ArgumentNullException(nameof(col));
+                throw new ArgumentNullException(nameof(collection));
             }
 
-            _collection = new T[col.Count];
-            _capacity = _collection.Length;
-            foreach (var variable in col)
+            _collection = new T[collection.Count()];
+
+            foreach (var variable in collection)
             {
                 Enqueue(variable);
             }
@@ -111,14 +108,18 @@ namespace Task2
         /// </summary>
         public void Enqueue(T elem)
         {
-            if (_collection.Length == _capacity)
+            if (Count == _collection.Length)
             {
-                var newCollection = new T[(int) (_capacity*_growFactory)];
+                var capacity = (int)(_collection.Length * _growFactory);
+                var newCollection = new T[capacity];
                 Array.Copy(_collection, newCollection, _collection.Length);
                 _collection = newCollection;
-                _capacity = (int)(_capacity * _growFactory);
+                _head = 0;
+                _tail = Count;
             }
-            _collection[_tail++%_capacity] = elem;
+            _collection[_tail] = elem;
+            _tail = (_tail + 1)%_collection.Length;
+            Count++;
         }
 
         /// <summary>
@@ -127,12 +128,15 @@ namespace Task2
         /// <exception cref="InvalidOperationException">The Queue is empty</exception>
         public T Dequeue()
         {
-            if (_collection.Length == 0)
+            if (Count == 0)
             {
                 throw new InvalidOperationException("Queue is empty");
             }
-
-            return _collection[++_head%_capacity];
+            T local = _collection[_head];
+            _collection[_head] = default(T);
+            _head = (_head + 1)%_collection.Length;
+            Count--;
+            return local;
         }
 
         /// <summary>
@@ -141,7 +145,7 @@ namespace Task2
         /// <exception cref="InvalidOperationException">The Queue is empty</exception>
         public T Peek()
         {
-            if (_collection.Length == 0)
+            if (Count == 0)
             {
                 throw new InvalidOperationException(nameof(Queue<T>));
             }
@@ -175,23 +179,12 @@ namespace Task2
                 throw new ArgumentException("Array is not a one-dimentioanal");
             }
 
-            if (array.GetType() != typeof(T))
+            if (array.GetType() != _collection.GetType())
             {
                 throw new ArrayTypeMismatchException(nameof(array));
             }
 
-            Array.Copy(_collection, 0, array, index, _collection.Length - index);
-        }
-
-        /// <summary>
-        /// Sets the caacity equals to actual number of elements in Queue
-        /// </summary>
-        public void TrimToSize()
-        {
-            var newCollection = new T[_collection.Length];
-            Array.Copy(_collection, newCollection, _collection.Length);
-            _collection = newCollection;
-            _capacity = _collection.Length;
+            Array.Copy(_collection, 0, array, index, Count - index);
         }
 
         /// <summary>
@@ -199,10 +192,18 @@ namespace Task2
         /// </summary>
         public void Clear()
         {
-            for (var i = 0; i < _collection.Length; i++)
+            if (_head < _tail)
             {
-                _collection[i] = default(T);
+                Array.Clear(_collection, _head, Count);
             }
+            else
+            {
+                Array.Clear(_collection, _head, _collection.Length - _head);
+                Array.Clear(_collection, 0, _tail);
+            }
+            _head = 0;
+            _tail = 0;
+            Count = 0;
         }
 
         #endregion
@@ -214,7 +215,7 @@ namespace Task2
         /// </summary>
         public IEnumerator<T> GetEnumerator()
         {
-            return new QueueEnumerator();
+            return new QueueEnumerator(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -241,7 +242,7 @@ namespace Task2
             /// </summary>
             public bool MoveNext()
             {
-                return ++_current%_queue.Count < _queue.Count;
+                return ++_current < _queue.Count;
             }
 
             /// <summary>
