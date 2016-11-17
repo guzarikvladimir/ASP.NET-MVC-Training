@@ -14,7 +14,6 @@ namespace Task3
         private T[] _collection;
         private readonly IEqualityComparer<T> _comparer;
         private int _last;
-        private int _capacity;
         private readonly int _defCapacity = 10;
         private readonly float _growFactory = 1.5f;
 
@@ -28,12 +27,7 @@ namespace Task3
         /// <summary>
         /// Initializes a new instance of the Set class that is empty and uses the default equality comparer for the set type.
         /// </summary>
-        public Set()
-        {
-            _collection = new T[_defCapacity];
-            _capacity = _defCapacity;
-            _comparer = new DefaultComparer();
-        }
+        public Set() : this(new DefaultComparer()) { }
 
         /// <summary>
         /// Initializes a new instance of the Set class that is empty and uses the specified equality comparer for the set type.
@@ -42,7 +36,6 @@ namespace Task3
         {
             _comparer = comparer;
             _collection = new T[_defCapacity];
-            _capacity = _defCapacity;
         }
 
         /// <summary>
@@ -62,8 +55,7 @@ namespace Task3
             }
 
             _comparer = comparer;
-            _capacity = collection.Count();
-            _collection = new T[_capacity];
+            _collection = new T[collection.Count()];
 
             foreach (var variable in collection)
             {
@@ -80,10 +72,10 @@ namespace Task3
         /// </summary>
         public void Add(T elem)
         {
-            if (_last == _capacity)
+            if (_last == _collection.Length)
             {
-                _capacity = (int)(_capacity * _growFactory);
-                var newCollection = new T[_capacity];
+                var capacity = (int)(_collection.Length * _growFactory);
+                var newCollection = new T[capacity];
                 Array.Copy(_collection, newCollection, _last);
                 _collection = newCollection;
             }
@@ -142,8 +134,7 @@ namespace Task3
         /// </summary>
         public void TrimToSize()
         {
-            _capacity = _last;
-            var newCollection = new T[_capacity];
+            var newCollection = new T[_last];
             Array.Copy(_collection, newCollection, _last);
             _collection = newCollection;
         }
@@ -153,10 +144,8 @@ namespace Task3
         /// </summary>
         public void Clear()
         {
-            for (var i = 0; i < _last; i++)
-            {
-                _collection[i] = default(T);
-            }
+            Array.Clear(_collection, 0, _last);
+            _last = 0;
         }
 
         /// <summary>
