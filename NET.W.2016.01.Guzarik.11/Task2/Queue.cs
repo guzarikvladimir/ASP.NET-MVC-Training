@@ -112,10 +112,10 @@ namespace Task2
             {
                 var capacity = (int)(_collection.Length * _growFactory);
                 var newCollection = new T[capacity];
-                Array.Copy(_collection, newCollection, _collection.Length);
+                Array.Copy(_collection, _head, newCollection, 0, Count - _head);
                 _collection = newCollection;
                 _head = 0;
-                _tail = Count;
+                _tail = Count - _head;
             }
             _collection[_tail] = elem;
             _tail++;
@@ -132,7 +132,7 @@ namespace Task2
             {
                 throw new InvalidOperationException("Queue is empty");
             }
-            T local = _collection[_head];
+            var local = _collection[_head];
             _collection[_head] = default(T);
             _head++;
             Count--;
@@ -192,15 +192,7 @@ namespace Task2
         /// </summary>
         public void Clear()
         {
-            if (_head < _tail)
-            {
-                Array.Clear(_collection, _head, Count);
-            }
-            else
-            {
-                Array.Clear(_collection, _head, _collection.Length - _head);
-                Array.Clear(_collection, 0, _tail);
-            }
+            Array.Clear(_collection, 0, _tail);
             _head = 0;
             _tail = 0;
             Count = 0;
