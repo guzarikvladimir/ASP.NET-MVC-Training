@@ -178,6 +178,23 @@ namespace Task3
         #endregion
 
         /// <summary>
+        /// Allows instance of a set class to be indexed just like arrays
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Index less than 0 or bigger than the number of elements in a set object</exception>
+        public T this[int index ]
+        {
+            get
+            {
+                if (index < 0 || index > Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(index));
+                }
+
+                return _collection[index];
+            }
+        }
+
+        /// <summary>
         /// Returns an enumerator that iterates through a Set object
         /// </summary>
         /// <returns></returns>
