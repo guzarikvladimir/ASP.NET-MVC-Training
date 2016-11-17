@@ -118,7 +118,7 @@ namespace Task2
                 _tail = Count;
             }
             _collection[_tail] = elem;
-            _tail = (_tail + 1)%_collection.Length;
+            _tail++;
             Count++;
         }
 
@@ -134,7 +134,7 @@ namespace Task2
             }
             T local = _collection[_head];
             _collection[_head] = default(T);
-            _head = (_head + 1)%_collection.Length;
+            _head++;
             Count--;
             return local;
         }
@@ -266,7 +266,7 @@ namespace Task2
                         throw new InvalidOperationException();
                     }
 
-                    return _queue._collection[_current%_queue.Count];
+                    return _queue._collection[_current];
                 }
             }
 
