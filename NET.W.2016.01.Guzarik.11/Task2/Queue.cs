@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -108,17 +109,16 @@ namespace Task2
         /// </summary>
         public void Enqueue(T elem)
         {
-            if (Count == _collection.Length)
+            if (_tail == _collection.Length)
             {
                 var capacity = (int)(_collection.Length * _growFactory);
                 var newCollection = new T[capacity];
-                Array.Copy(_collection, _head, newCollection, 0, Count - _head);
+                Array.Copy(_collection, _head, newCollection, 0, Count);
                 _collection = newCollection;
                 _head = 0;
-                _tail = Count - _head;
+                _tail = Count;
             }
-            _collection[_tail] = elem;
-            _tail++;
+            _collection[_tail++] = elem;
             Count++;
         }
 
