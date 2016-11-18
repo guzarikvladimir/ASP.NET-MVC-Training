@@ -164,13 +164,53 @@ namespace Task3
             return -1;
         }
 
-        #endregion
+        /// <summary>
+        /// Returns elements that are present in that object and in the specified collection
+        /// </summary>
+        /// <exception cref="ArgumentNullException">Input collection is null</exception>
+        public IEnumerable<T> Intersect(IEnumerable<T> other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                throw new ArgumentNullException();
+            }
+
+            return _collection.Intersect(other).Where(n => n != null);
+        }
+
+        /// <summary>
+        /// Returns the result of the removing all elements in the specified collection from the current Set object
+        /// </summary>
+        /// <exception cref="ArgumentNullException">Input collection is null</exception>
+        public IEnumerable<T> Except(IEnumerable<T> other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                throw new ArgumentNullException();
+            }
+
+            return _collection.Except(other).Where(n => n != null);
+        }
+
+        /// <summary>
+        /// Returns all elements that are present in itself, the specified collection, or both 
+        /// </summary>
+        /// <exception cref="ArgumentNullException">Input collection is null</exception>
+        public IEnumerable<T> Union(IEnumerable<T> other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                throw new ArgumentNullException();
+            }
+
+            return _collection.Union(other).Where(n => n != null);
+        }
 
         /// <summary>
         /// Allows instance of a set class to be indexed just like arrays
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">Index less than 0 or bigger than the number of elements in a set object</exception>
-        public T this[int index ]
+        public T this[int index]
         {
             get
             {
@@ -182,6 +222,8 @@ namespace Task3
                 return _collection[index];
             }
         }
+
+        #endregion
 
         /// <summary>
         /// Returns an enumerator that iterates through a Set object

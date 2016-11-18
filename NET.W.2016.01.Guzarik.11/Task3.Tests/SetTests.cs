@@ -38,6 +38,42 @@ namespace Task3.Tests
 
             Assert.AreEqual(3, set.Count);
         }
+
+        [Test]
+        public void Except()
+        {
+            var set1 = new Set<string> {"one", "two", "three", "four", "five"};
+            var set2 = new Set<string> {"one", "two", "three"};
+            var expected = new Set<string> {"four", "five"};
+
+            var actual = set1.Except(set2).ToArray();
+            
+            CollectionAssert.AreEquivalent(expected, actual);
+        }
+
+        [Test]
+        public void Intersect()
+        {
+            var set1 = new Set<string> {"two", "three", "four", "five"};
+            var set2 = new Set<string> {"one", "two", "three"};
+            var expected = new Set<string> {"two", "three"};
+
+            var actual = set1.Intersect(set2).ToArray();
+            
+            CollectionAssert.AreEquivalent(expected, actual);
+        }
+
+        [Test]
+        public void Union()
+        {
+            var set1 = new Set<string> {"one", "two", "three", "four", "five"};
+            var set2 = new Set<string> {"one", "two", "three"};
+            var expected = new Set<string> {"one", "two", "three", "four", "five"};
+
+            var actual = set1.Union(set2).ToArray();
+            
+            CollectionAssert.AreEquivalent(expected, actual);
+        }
     }
 
     class Point
