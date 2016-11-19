@@ -12,7 +12,6 @@ namespace Task1
     {
         private volatile List<Book> _collection;
         private const int DefaultCapacity = 5;
-        private static readonly object Sync = new object();
 
         #region Properties
 
@@ -32,13 +31,7 @@ namespace Task1
             {
                 if (_collection == null)
                 {
-                    lock (Sync)
-                    {
-                        if (_collection == null)
-                        {
-                            ReadBooks();
-                        }
-                    }
+                    ReadBooks();
                 }
 
                 return _collection;
