@@ -1,174 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Task1
 {
     /// <summary>
     /// Class to work with a storage of book's collection
     /// </summary>
-    public sealed class BookListStorage : IBookRepository
+    public sealed class BookListStorage : IBookStorage
     {
-        private volatile List<Book> _collection;
-        private const int DefaultCapacity = 5;
-
-        #region Properties
+        private readonly string _fileName;
 
         /// <summary>
-        /// A path to book's storage
+        /// Creates a new binary storage connected with a specified file
         /// </summary>
-        public string FilePath { get; set; } = "BooksStorage.txt";
-
-        /// <summary>
-        /// Returns the book's collection
-        /// </summary>
-        /// <remarks>If collection is empty, the collection will load from the storage</remarks>
-        /// <exception cref="NameNotFoundException">Wrong path to the storage</exception>
-        public IEnumerable<Book> GetBooks
+        public BookListStorage(string fileName)
         {
-            get
-            {
-                if (_collection == null)
-                {
-                    ReadBooks();
-                }
-
-                return _collection;
-            }
-        }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Creates empty virtual books storage
-        /// </summary>
-        public BookListStorage()
-        {
-            _collection = new List<Book>(DefaultCapacity);
-        }
-
-        /// <summary>
-        /// Loads book's collection from the storage
-        /// </summary>
-        public BookListStorage(string path)
-        {
-            FilePath = path;
-            ReadBooks();
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        /// Adds book to the collection
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The book is undefined</exception>
-        /// <exception cref="ArgumentException">The book is already in the collection</exception>
-        public void AddBook(Book book)
-        {
-            if (ReferenceEquals(book, null))
-            {
-                throw new ArgumentNullException(nameof(book));
-            }
-            if (_collection.Contains(book))
-            {
-                throw new ArgumentException(nameof(book));
-            }
-
-            _collection.Add(book);
-        }
-
-        /// <summary>
-        /// Removes book from the collection
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The book is undefined</exception>
-        /// <exception cref="ArgumentException">The collection doesn't contain the book</exception>
-        public void RemoveBook(Book book)
-        {
-            if (ReferenceEquals(book, null))
-            {
-                throw new ArgumentNullException();
-            }
-            if (!_collection.Contains(book))
-            {
-                throw new ArgumentException(nameof(book));
-            }
-
-            _collection.Remove(book);
-        }
-
-        /// <summary>
-        /// Returns the book from the collection that satisfies the specified information on the specified tag
-        /// </summary>
-        public Book FindBookByTag(Tag tag, string info)
-        {
-            return _collection.FirstOrDefault(variable => variable.Equals(tag, info));
-        }
-
-        /// <summary>
-        /// Sorts the collection on the specified tag
-        /// </summary>
-        public void SortBooksByTag(Tag tag)
-        {
-            _collection.Sort((x, y) => x.CompareTo(y, tag));
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        /// Loads the book's collecction from the storage
-        /// </summary>
-        /// <exception cref="NameNotFoundException">Wrong path to the storage</exception>
-        private void ReadBooks()
-        {
-            try
-            {
-                using (Stream stream = new FileStream(FilePath, FileMode.Open, FileAccess.Read))
-                {
-                    var br = new BinaryReader(stream);
-                    _collection = new List<Book>(DefaultCapacity);
-
-                    while (br.PeekChar() != -1)
-                    {
-                        AddBook(new Book(
-                            br.ReadString(),
-                            br.ReadString(),
-                            br.ReadString(),
-                            br.ReadInt32(),
-                            br.ReadString()));
-                    }
-                }
-            }
-            catch (FileNotFoundException exc)
-            {
-                throw new NameNotFoundException(exc.FileName, exc);
-            }
+            _fileName = fileName;
         }
 
         /// <summary>
         /// Saves the book's collection the the storage
         /// </summary>
-        private void SaveBooks()
+        /// <remarks>If storage with the specified name does't exist, it will be created</remarks>
+        public void SaveBooks(IEnumerable<Book> collection)
         {
             Stream stream;
 
             try
             {
-                stream = new FileStream(FilePath, FileMode.Create, FileAccess.Write);
+                stream = new FileStream(_fileName, FileMode.Create, FileAccess.Write);
             }
             catch (FileNotFoundException)
             {
-                stream = new FileStream(FilePath, FileMode.CreateNew, FileAccess.Write);
+                stream = new FileStream(_fileName, FileMode.CreateNew, FileAccess.Write);
             }
             var bw = new BinaryWriter(stream);
 
-            foreach (var variable in _collection)
+            foreach (var variable in collection)
             {
                 bw.Write(variable.Name ?? "Unknown");
                 bw.Write(variable.Author ?? "Unknown");
@@ -182,14 +50,36 @@ namespace Task1
             stream.Close();
         }
 
-        #endregion
-
         /// <summary>
-        /// Saves the collection to the storage at the end of the work
+        /// Loads the book's collecction from the storage
         /// </summary>
-        ~BookListStorage()
+        /// <exception cref="NameNotFoundException">Wrong path to the storage</exception>
+        public IEnumerable<Book> LoadBooks()
         {
-            SaveBooks();
+            var collection = new List<Book>();
+            try
+            {
+                using (Stream stream = new FileStream(_fileName, FileMode.Open, FileAccess.Read))
+                {
+                    var br = new BinaryReader(stream);
+
+                    while (br.PeekChar() != -1)
+                    {
+                        collection.Add(new Book(
+                            br.ReadString(),
+                            br.ReadString(),
+                            br.ReadString(),
+                            br.ReadInt32(),
+                            br.ReadString()));
+                    }
+                }
+            }
+            catch (FileNotFoundException exc)
+            {
+                throw new NameNotFoundException(exc.FileName, exc);
+            }
+
+            return collection;
         }
     }
 

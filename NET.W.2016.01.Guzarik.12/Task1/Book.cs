@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 
 namespace Task1
 {
@@ -78,9 +77,8 @@ namespace Task1
             var otherBook = obj as Book;
 
             if (ReferenceEquals(otherBook, null))
-            {
                 throw new ArgumentException(nameof(obj));
-            }
+
             return Equals(otherBook);
         }
 
@@ -105,43 +103,14 @@ namespace Task1
         /// </summary>
         public bool Equals(Book other)
         {
-            if (ReferenceEquals(other, null))
-            {
-                return false;
-            }
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
+            if (ReferenceEquals(other, null)) return false;
+            if (ReferenceEquals(this, other)) return true;
 
-            return string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase) == 0 &&
-                   string.Compare(Author, other.Author, StringComparison.InvariantCultureIgnoreCase) == 0 &&
-                   string.Compare(PublishingHouse, other.PublishingHouse, StringComparison.InvariantCultureIgnoreCase) == 0 &&
-                   string.Compare(Language, other.Language, StringComparison.InvariantCultureIgnoreCase) == 0 &&
+            return string.Equals(Name, other.Name, StringComparison.InvariantCultureIgnoreCase) &&
+                   string.Equals(Author, other.Author, StringComparison.InvariantCultureIgnoreCase) &&
+                   string.Equals(PublishingHouse, other.PublishingHouse, StringComparison.InvariantCultureIgnoreCase) &&
+                   string.Equals(Language, other.Language, StringComparison.InvariantCultureIgnoreCase) &&
                    Year == other.Year;
-        }
-
-        /// <summary>
-        /// Determines whethet the specified book object is equal to the current object on the specified tag
-        /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException">The incorrect tag</exception>
-        public bool Equals(Tag tag, string info)
-        {
-            switch (tag)
-            {
-                case Tag.Name:
-                    return string.Compare(Name, info, StringComparison.InvariantCultureIgnoreCase) == 0;
-                case Tag.Author:
-                    return string.Compare(Author, info, StringComparison.InvariantCultureIgnoreCase) == 0;
-                case Tag.PublishingHouse:
-                    return string.Compare(PublishingHouse, info, StringComparison.InvariantCultureIgnoreCase) == 0;
-                case Tag.Year:
-                    return Year == int.Parse(info);
-                case Tag.Language:
-                    return string.Compare(Language, info, StringComparison.InvariantCultureIgnoreCase) == 0;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(tag), tag, null);
-            }
         }
 
         /// <summary>
@@ -153,7 +122,10 @@ namespace Task1
         /// <returns>Returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object</returns>
         public int CompareTo(Book other)
         {
-            return CompareTo(other, Tag.Name);
+            if (ReferenceEquals(other, null))
+                throw new ArgumentNullException();
+
+            return string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase);
         }
 
         /// <summary>
@@ -168,77 +140,11 @@ namespace Task1
             var otherBook = obj as Book;
 
             if (ReferenceEquals(otherBook, null))
-            {
                 throw new ArgumentNullException(nameof(obj));
-            }
 
-            return CompareTo(otherBook, Tag.Name);
-        }
-
-        /// <summary>
-        /// Compares the current instance with another book object on the specified tag
-        /// </summary>
-        /// <remarks>Less than zero - This instance precedes obj in the sort order.
-        /// Zero - This instance occurs in the same position in the sort order as obj.
-        /// Greater than zero - This instance follows obj in the sort order.</remarks>
-        /// <returns>Returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object</returns>
-        /// <exception cref="ArgumentOutOfRangeException">The incorrect tag</exception>
-        public int CompareTo(Book other, Tag tag)
-        {
-            if (ReferenceEquals(other, null))
-            {
-                return 1;
-            }
-            if (ReferenceEquals(this, other))
-            {
-                return 0;
-            }
-
-            switch (tag)
-            {
-                case Tag.Name:
-                    return string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase);
-                case Tag.Author:
-                    return string.Compare(Author, other.Author, StringComparison.InvariantCultureIgnoreCase);
-                case Tag.PublishingHouse:
-                    return string.Compare(PublishingHouse, other.PublishingHouse, StringComparison.InvariantCultureIgnoreCase);
-                case Tag.Year:
-                    if (Year < other.Year) return -1;
-                    return Year > other.Year ? 1 : 0;
-                case Tag.Language:
-                    return string.Compare(Language, other.Language, StringComparison.InvariantCultureIgnoreCase);
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(tag), tag, null);
-            }
+            return CompareTo(otherBook);
         }
 
         #endregion
-    }
-
-    /// <summary>
-    /// The criterion for comparison or search object
-    /// </summary>
-    public enum Tag
-    {
-        /// <summary>
-        /// Sort or find by name
-        /// </summary>
-        Name,
-        /// <summary>
-        /// Sort or find by Author
-        /// </summary>
-        Author,
-        /// <summary>
-        /// Sort or find by PublishingHouse
-        /// </summary>
-        PublishingHouse,
-        /// <summary>
-        /// Sort or find by Year
-        /// </summary>
-        Year,
-        /// <summary>
-        /// Sort or find by Language
-        /// </summary>
-        Language
     }
 }

@@ -1,25 +1,29 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Task1
 {
     /// <summary>
     /// A service to work with a collection of books
     /// </summary>
-    public sealed class BookListService : IEnumerable<Book>
+    public sealed class BookListService
     {
-        private readonly IBookRepository _repository;
+        private SortedSet<Book> _collection;
+
+        #region Constructors
 
         /// <summary>
-        /// Creates a collection of book on specified repository
+        /// Creates an empty collection of book
         /// </summary>
-        public BookListService(IBookRepository repository)
+        public BookListService()
         {
-            _repository = repository;
+            _collection = new SortedSet<Book>();
         }
 
-        #region Methods
+        #endregion
+
+        #region API
 
         /// <summary>
         /// Add book to the collection
@@ -29,11 +33,12 @@ namespace Task1
         public void AddBook(Book book)
         {
             if (ReferenceEquals(book, null))
-            {
                 throw new ArgumentNullException(nameof(book));
-            }
 
-            _repository.AddBook(book);
+            if (_collection.Contains(book))
+                throw new ArgumentException(nameof(book));
+
+            _collection.Add(book);
         }
 
         /// <summary>
@@ -44,42 +49,90 @@ namespace Task1
         public void RemoveBook(Book book)
         {
             if (ReferenceEquals(book, null))
-            {
                 throw new ArgumentNullException(nameof(book));
-            }
 
-            _repository.RemoveBook(book);
+            if (!_collection.Contains(book))
+                throw new ArgumentException(nameof(book));
+
+            _collection.Remove(book);
         }
 
         /// <summary>
-        /// Returns the book from the collection that satisfies the specified information on the specified tag
+        /// Returns the book from the collection that satisfies the specified information comparison
         /// </summary>
-        public Book FindBookByTag(Tag tag, string info)
+        public Book FindBookByTag(Func<Book, bool> predicate)
         {
-            return _repository.FindBookByTag(tag, info);
+            if (ReferenceEquals(predicate, null))
+                throw new ArgumentNullException(nameof(predicate));
+
+            return _collection.FirstOrDefault(predicate);
         }
 
         /// <summary>
-        /// Sorts the collection on the specified tag
+        /// Sorts the collection on the specified comparer
         /// </summary>
-        public void SortBooksByTag(Tag tag)
+        /// <exception cref="ArgumentNullException"></exception>
+        public void SortBooksByTag(IComparer<Book> comparer)
         {
-            _repository.SortBooksByTag(tag);
+            if (ReferenceEquals(comparer, null))
+                throw new ArgumentNullException(nameof(comparer));
+
+            _collection = new SortedSet<Book>(_collection, comparer);
         }
 
-        #endregion
+        /// <summary>
+        /// Sorts the collection on the specified comparison
+        /// </summary>
+        public void SortBooksByTag(Comparison<Book> comparer)
+        {
+            if (ReferenceEquals(comparer, null))
+                throw new ArgumentNullException(nameof(comparer));
+
+            SortBooksByTag(new ComparisonAdapter(comparer));
+        }
+
+        /// <summary>
+        /// Saves the book's collection the the specified storage
+        /// </summary>
+        public void SaveBooks(IBookStorage storage)
+        {
+            storage.SaveBooks(_collection);
+        }
+
+        /// <summary>
+        /// Loads the book's collecction from the specified storage
+        /// </summary>
+        public void LoadBooks(IBookStorage storage)
+        {
+            _collection = new SortedSet<Book>(storage.LoadBooks());
+        }
 
         /// <summary>
         /// Returns an enumerator that iterates through a collection
         /// </summary>
         public IEnumerator<Book> GetEnumerator()
         {
-            return _repository.GetBooks.GetEnumerator();
+            return ((IEnumerable<Book>) _collection).GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        #endregion
+
+        #region ComparisonAdapter
+
+        private class ComparisonAdapter : IComparer<Book>
         {
-            return GetEnumerator();
+            private readonly Comparison<Book> _comparison;
+
+            public ComparisonAdapter(Comparison<Book> comparer)
+            {
+                _comparison = comparer;
+            }
+            public int Compare(Book x, Book y)
+            {
+                return _comparison.Invoke(x, y);
+            }
         }
+
+        #endregion
     }
 }

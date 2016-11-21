@@ -1,27 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using NLog;
 
 namespace Task1.ConsoleUI
 {
-    class Program
+    internal class Program
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         static void Main()
         {
-            BookListService service;
-            try
-            {
-                IBookRepository repository = new BookListStorage("BooksStorage.txt");
-                service = new BookListService(repository);
-            }
-            catch (Exception exc)
-            {
-                logger.Info("Repository problem:");
-                logger.Error(exc.StackTrace);
-
-                return;
-            }
+            var service = new BookListService();
 
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("--------------------Добавление---------------");
@@ -47,13 +36,13 @@ namespace Task1.ConsoleUI
                 }
                 catch (ArgumentException exc)
                 {
-                    logger.Info("Adding element. Element exists in the collection:");
-                    logger.Error(exc.StackTrace);
+                    Logger.Info("Adding element. Element exists in the collection:");
+                    Logger.Error(exc.StackTrace);
                 }
                 catch (Exception exc)
                 {
-                    logger.Info("Unhandled adding exception:");
-                    logger.Error(exc.StackTrace);
+                    Logger.Info("Unhandled adding exception:");
+                    Logger.Error(exc.StackTrace);
                 }
             }
 
@@ -74,23 +63,21 @@ namespace Task1.ConsoleUI
             {
                 try
                 {
-
                     service.RemoveBook(variable);
-
                 }
                 catch (ArgumentException exc)
                 {
-                    logger.Info("Removing element. The element are not in the collection:");
-                    logger.Error(exc.Message);
-                    logger.Error(exc.Data);
-                    logger.Error(exc.Source);
-                    logger.Error(exc.TargetSite);
-                    logger.Error(exc.StackTrace);
+                    Logger.Info("Removing element. The element are not in the collection:");
+                    Logger.Error(exc.Message);
+                    Logger.Error(exc.Data);
+                    Logger.Error(exc.Source);
+                    Logger.Error(exc.TargetSite);
+                    Logger.Error(exc.StackTrace);
                 }
                 catch (Exception exc)
                 {
-                    logger.Info("Unhandled removing exception:");
-                    logger.Error(exc.StackTrace);
+                    Logger.Info("Unhandled removing exception:");
+                    Logger.Error(exc.StackTrace);
                 }
             }
 
@@ -100,10 +87,10 @@ namespace Task1.ConsoleUI
             }
 
             Console.WriteLine("---------------------------------------------");
-            Console.WriteLine("--------------------Сортировка---------------");
+            Console.WriteLine("------------Сортировка по автору-------------");
             Console.WriteLine("---------------------------------------------");
 
-            service.SortBooksByTag(Tag.Name);
+            service.SortBooksByTag(new CompareByAuthor());
 
             foreach (var variable in service)
             {
@@ -114,11 +101,31 @@ namespace Task1.ConsoleUI
             Console.WriteLine("--------------------Поиск--------------------");
             Console.WriteLine("---------------------------------------------");
 
-            var book = service.FindBookByTag(Tag.Author, "Джон Скит");
+            var book = service.FindBookByTag(x => x.Author == "Джон Скит");
 
             Console.WriteLine(book);
 
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("--------------Сохранение/Загрузка------------");
+            Console.WriteLine("---------------------------------------------");
+
+            service.SaveBooks(new BookListStorage("BookStorage.txt"));
+            service.LoadBooks(new BookListStorage("BookStorage.txt"));
+
+            foreach (var variable in service)
+            {
+                Console.WriteLine(variable);
+            }
+
             Console.ReadKey();
+        }
+
+        private class CompareByAuthor : IComparer<Book>
+        {
+            public int Compare(Book x, Book y)
+            {
+                return string.Compare(x.Author, y.Author, StringComparison.Ordinal);
+            }
         }
     }
 }
