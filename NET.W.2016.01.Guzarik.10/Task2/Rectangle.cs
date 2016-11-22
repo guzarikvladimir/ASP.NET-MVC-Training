@@ -27,10 +27,8 @@ namespace Task2
         public double Width
         {
             get { return _width; }
-            set
+            private set
             {
-                if (value < 0)
-                    throw new ArgumentException();
                 _width = value;
             }
         }
@@ -42,10 +40,8 @@ namespace Task2
         public double Height
         {
             get { return _height; }
-            set
+            private set
             {
-                if (value < 0)
-                    throw new ArgumentException();
                 _height = value;
             }
         }
