@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TimerEventArgs.cs" />
+    <Compile Include="MessageEventArgs.cs" />
     <Compile Include="TimerImitation.cs" />
     <Compile Include="MailSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
