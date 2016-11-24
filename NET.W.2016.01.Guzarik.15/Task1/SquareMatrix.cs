@@ -15,7 +15,7 @@ namespace Task1
         /// </summary>
         protected readonly T[,] Matrix;
         private int _rank;
-        private SetterSender _setterSender;
+        private MatrixSender _setterSender;
 
         #region Properties
 
@@ -93,7 +93,7 @@ namespace Task1
         /// <summary>
         /// Registers on event about index changes
         /// </summary>
-        public void RegisterOnIndexSetted(SetterSender setterSender)
+        public void RegisterOnIndexSetted(MatrixSender setterSender)
         {
             if (ReferenceEquals(_setterSender, null))
                 _setterSender = setterSender;
@@ -104,7 +104,7 @@ namespace Task1
         /// <summary>
         /// Unregisters from event about index changes
         /// </summary>
-        public void UnregisterFromIndexSetted(SetterSender setterSender)
+        public void UnregisterFromIndexSetted(MatrixSender setterSender)
         {
             _setterSender.IndexSetted -= ActWhenIndexSetted;
             _setterSender = null;

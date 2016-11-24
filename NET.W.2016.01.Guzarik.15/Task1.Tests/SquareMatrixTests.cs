@@ -51,7 +51,7 @@ namespace Task1.Tests
         public void Event_Register()
         {
             var matrix = new SquareMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
-            matrix.RegisterOnIndexSetted(new SetterSender());
+            matrix.RegisterOnIndexSetted(new MatrixSender());
 
             // до регистрации
             StringAssert.AreEqualIgnoringCase(null, matrix.MessageFromIndexSetted);

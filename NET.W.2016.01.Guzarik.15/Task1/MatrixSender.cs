@@ -3,12 +3,12 @@
 namespace Task1
 {
     /// <summary>
-    /// Class generates event on changing index
+    /// Class generates event for matrix
     /// </summary>
-    public class SetterSender
+    public class MatrixSender
     {
         /// <summary>
-        /// The member-event
+        /// Event on index setted
         /// </summary>
         public event EventHandler<SetterEventArgs> IndexSetted = delegate { };
         
