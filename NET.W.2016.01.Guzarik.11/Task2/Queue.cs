@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +13,9 @@ namespace Task2
         private T[] _collection;
         private int _head;
         private int _tail;
-        private readonly int _defaultCapacity = 10;
+        private int _count;
+        private const int DefaultCapacity = 10;
         private readonly float _growFactory = 1.5f;
-
-        /// <summary>
-        /// Returns actual count of elements in Queue
-        /// </summary>
-        public int Count { get; private set; }
 
         #region Constructors
 
@@ -29,7 +24,7 @@ namespace Task2
         /// </summary>
         public Queue()
         {
-            _collection = new T[_defaultCapacity];
+            _collection = new T[DefaultCapacity];
         }
 
         /// <summary>
@@ -39,9 +34,7 @@ namespace Task2
         public Queue(int capacity)
         {
             if (capacity < 0)
-            {
                 throw new ArgumentOutOfRangeException(nameof(capacity));
-            }
 
             _collection = new T[capacity];
         }
@@ -53,14 +46,10 @@ namespace Task2
         public Queue(int capacity, float growFactory)
         {
             if (capacity < 0)
-            {
                 throw new ArgumentOutOfRangeException(nameof(capacity));
-            }
 
             if (growFactory < 1.0f || growFactory > 10.0f)
-            {
                 throw new ArgumentOutOfRangeException(nameof(growFactory));
-            }
 
             _collection = new T[capacity];
             _growFactory = growFactory;
@@ -73,31 +62,12 @@ namespace Task2
         public Queue(IEnumerable<T> collection)
         {
             if (ReferenceEquals(collection, null))
-            {
                 throw new ArgumentNullException(nameof(collection));
-            }
 
             _collection = new T[collection.Count()];
 
             foreach (var variable in collection)
-            {
                 Enqueue(variable);
-            }
-        }
-
-        /// <summary>
-        /// Returns a new copy of Queue
-        /// </summary>
-        /// <exception cref="ArgumentNullException">Input Queue is null</exception>
-        public Queue(Queue<T> queue)
-        {
-            if (ReferenceEquals(queue, null))
-            {
-                throw new ArgumentNullException();
-            }
-
-            _collection = new T[queue.Count];
-            Array.Copy(queue._collection, _collection, queue.Count);
         }
 
         #endregion
@@ -113,13 +83,13 @@ namespace Task2
             {
                 var capacity = (int)(_collection.Length * _growFactory);
                 var newCollection = new T[capacity];
-                Array.Copy(_collection, _head, newCollection, 0, Count);
+                Array.Copy(_collection, _head, newCollection, 0, _count);
                 _collection = newCollection;
                 _head = 0;
-                _tail = Count;
+                _tail = _count;
             }
             _collection[_tail++] = elem;
-            Count++;
+            _count++;
         }
 
         /// <summary>
@@ -128,14 +98,13 @@ namespace Task2
         /// <exception cref="InvalidOperationException">The Queue is empty</exception>
         public T Dequeue()
         {
-            if (Count == 0)
-            {
+            if (_count == 0)
                 throw new InvalidOperationException("Queue is empty");
-            }
+
             var local = _collection[_head];
             _collection[_head] = default(T);
             _head++;
-            Count--;
+            _count--;
             return local;
         }
 
@@ -145,10 +114,8 @@ namespace Task2
         /// <exception cref="InvalidOperationException">The Queue is empty</exception>
         public T Peek()
         {
-            if (Count == 0)
-            {
+            if (_count == 0)
                 throw new InvalidOperationException(nameof(Queue<T>));
-            }
 
             return _collection[_head];
         }
@@ -165,26 +132,18 @@ namespace Task2
         public void CopyTo(Array array, int index)
         {
             if (index < 0 || index > array.Length)
-            {
                 throw new ArgumentOutOfRangeException(nameof(index));
-            }
 
             if (ReferenceEquals(array, null))
-            {
                 throw new ArgumentNullException(nameof(array));
-            }
 
             if (array.GetType().GetArrayRank() != 1)
-            {
                 throw new ArgumentException("Array is not a one-dimentioanal");
-            }
 
             if (array.GetType() != _collection.GetType())
-            {
                 throw new ArrayTypeMismatchException(nameof(array));
-            }
 
-            Array.Copy(_collection, 0, array, index, Count - index);
+            Array.Copy(_collection, 0, array, index, _count - index);
         }
 
         /// <summary>
@@ -195,7 +154,7 @@ namespace Task2
             Array.Clear(_collection, 0, _tail);
             _head = 0;
             _tail = 0;
-            Count = 0;
+            _count = 0;
         }
 
         #endregion
@@ -218,7 +177,7 @@ namespace Task2
         /// <summary>
         /// Incapsuates the enumarator of generic Queue
         /// </summary>
-        public struct QueueEnumerator : IEnumerator<T>
+        private struct QueueEnumerator : IEnumerator<T>
         {
             private readonly Queue<T> _queue;
             private int _current; 
@@ -234,7 +193,7 @@ namespace Task2
             /// </summary>
             public bool MoveNext()
             {
-                return ++_current < _queue.Count;
+                return ++_current < _queue._count;
             }
 
             /// <summary>
@@ -253,10 +212,8 @@ namespace Task2
             {
                 get
                 {
-                    if (_current == -1 || _current == _queue.Count)
-                    {
+                    if (_current == -1 || _current == _queue._count)
                         throw new InvalidOperationException();
-                    }
 
                     return _queue._collection[_current];
                 }

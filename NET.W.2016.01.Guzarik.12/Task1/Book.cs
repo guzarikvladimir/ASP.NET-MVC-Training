@@ -41,7 +41,7 @@ namespace Task1
         /// <summary>
         /// Creates the object object with specified information
         /// </summary>
-        public Book(string name = null, string author = null, string publishingHouse = null, 
+        public Book(string name, string author = null, string publishingHouse = null, 
             int? year = null, string language = null)
         {
             Name = name;

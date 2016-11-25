@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using NLog;
 
 namespace Task1.ConsoleUI
@@ -55,7 +56,7 @@ namespace Task1.ConsoleUI
             Console.WriteLine("--------------------Удаление-----------------");
             Console.WriteLine("---------------------------------------------");
 
-            var defBook = new Book();
+            var defBook = new Book("Unknown", "Unknown");
 
             Book[] removingBooks = { book5, defBook };
 

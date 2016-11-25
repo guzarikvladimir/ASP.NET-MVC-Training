@@ -69,27 +69,6 @@ namespace Task2.Tests
         }
 
         [Test]
-        public void Peek_PeekingNTimes_TheCountOfElementsInQueueDoesntChangeAndThePeeksSameElement()
-        {
-            // arrange
-            var queue = new Queue<int>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                queue.Enqueue(i);
-            }
-
-            // act/assert
-
-            for (int i = 0; i < 7; i++)
-            {
-                Assert.AreEqual(0, queue.Peek());
-            }
-
-            Assert.AreEqual(10, queue.Count);
-        }
-
-        [Test]
         public void CopyTo_OneDimentionalArray_Equals()
         {
             // arrange
@@ -103,24 +82,6 @@ namespace Task2.Tests
 
             // assert
             Assert.AreEqual(queue, actual);
-        }
-
-        [Test]
-        public void Clear_()
-        {
-            // arrange
-            var queue = new Queue<int>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                queue.Enqueue(i);
-            }
-
-            // act
-            queue.Clear();
-
-            // assert
-            Assert.AreEqual(0, queue.Count);
         }
 
         #endregion
