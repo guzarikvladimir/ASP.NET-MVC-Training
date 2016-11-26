@@ -5,3 +5,4 @@ https://github.com/guzarikvladimir/ASP.NET-MVC-Training/tree/master/NET.W.2016.0
 	b)	System.String (использовать сравнение по умолчанию и подключаемый компаратор); 
 	c)	пользовательский класс Book, для объектов которого реализовано отношения порядка (использовать сравнение по умолчанию и подключаемый компаратор); 
 	d)	пользовательскую структуру Point, для объектов которого не реализовано отношения порядка (использовать подключаемый компаратор) .
+https://github.com/guzarikvladimir/ASP.NET-MVC-Training/tree/master/NET.W.2016.01.Guzarik.15/Task2
