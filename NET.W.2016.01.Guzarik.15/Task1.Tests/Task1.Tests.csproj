@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Task1\Task1.csproj">
-      <Project>{fda5b256-c32b-483b-88a4-f00c112389da}</Project>
+      <Project>{a34a405d-e465-4e4c-a72d-d34b92e5b57a}</Project>
       <Name>Task1</Name>
     </ProjectReference>
   </ItemGroup>

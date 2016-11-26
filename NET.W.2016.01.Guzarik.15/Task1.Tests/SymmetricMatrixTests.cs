@@ -1,27 +1,35 @@
 ﻿using System;
 using NUnit.Framework;
+using Task1.extensions;
+using Task1.hierarchy;
 
 namespace Task1.Tests
 {
     [TestFixture]
     class SymmetricMatrixTests
     {
-        [TestCase(2, 1, 2, 2, 3)]
-        [TestCase(3, 1, 3, 0, 3, 2, 6, 0, 6, 5)]
-        public void Constructor_ValidRank(int expected, params int[] numbers)
+        [Test]
+        public void Event()
         {
-            var matrix = new SymmetricMatrix<int>(numbers);
+            var matrix = new SymmetricMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            var expected = "Index [1,2] has changed in symmetric matrix" + Environment.NewLine;
 
-            Assert.AreEqual(expected, matrix.Rank);
+            matrix[1, 2] = 32;
+
+            StringAssert.AreEqualIgnoringCase(expected, matrix.MessageFromIndexSetted);
         }
 
-        [TestCase(1, 2, 2, 3)]
-        [TestCase(1, 3, 0, 3, 2, 6, 0, 6, 5)]
-        public void ToString_Integers(params int[] numbers)
+        [Test]
+        public void Sum()
         {
-            var matrix = new SymmetricMatrix<int>(numbers);
+            var matrix = new SymmetricMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
-            Console.WriteLine(matrix.ToString());
+            var actual = matrix.Sum(matrix);
+
+            foreach (var variable in actual)
+            {
+                Console.WriteLine(variable);
+            }
         }
     }
 }

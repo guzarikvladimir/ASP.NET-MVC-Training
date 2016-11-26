@@ -1,77 +1,49 @@
 ﻿using System;
 using NUnit.Framework;
+using Task1.extensions;
+using Task1.hierarchy;
 
 namespace Task1.Tests
 {
     [TestFixture]
     public class SquareMatrixTests
     {
-        [TestCase(2, 1, 2, 3, 4)]
-        [TestCase(3, 1, 2, 3, 4, 5, 6, 7, 8, 9)]
-        [TestCase(4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)]
-        public void Constructor_ValidRank(int expected, params int[] numbers)
-        {
-            var matrix = new SquareMatrix<int>(numbers);
-
-            Assert.AreEqual(expected, matrix.Rank);
-        }
-
-        [TestCase(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)]
-        [TestCase(1, 2, 3, 4, 5, 6, 7, 8, 9)]
-        [TestCase(1, 2, 3, 4)]
-        public void ToString_Integers(params int[] numbers)
-        {
-            var matrix = new SquareMatrix<int>(numbers);
-
-            Console.WriteLine(matrix.ToString());
-        }
-
-        [TestCase("one", null, null, "four")]
-        [TestCase("one", null, null, null, "five", null, null, null, "nine")]
-        [TestCase("one", null, null, null, null, "six", null, null, null, null, "eleven", null, null, null, null, "six")]
-        public void ToString_Strings(params string[] strings)
-        {
-            var matrix = new DiagonalMatrix<string>(strings);
-
-            Console.WriteLine(matrix.ToString(2));
-        }
-
-        [TestCase(0, 2, 3)]
-        [TestCase(1, 0, 4)]
-        [TestCase(1, 2, 6)]
-        [TestCase(2, 2, 9)]
-        public void Indexer_GetValueByTwoIndexes(int i, int j, int expected)
-        {
-            var matrix = new SquareMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-            Assert.AreEqual(expected, matrix[i, j]);
-        }
-
         [Test]
-        public void Event_Register()
+        public void Event()
         {
             var matrix = new SquareMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
-            matrix.RegisterOnIndexSetted(new MatrixSender());
-
-            // до регистрации
-            StringAssert.AreEqualIgnoringCase(null, matrix.MessageFromIndexSetted);
-
-            // после регистрации
-            const string expected = "Index [1,2] has changed";
+            var expected = "Index [1,2] has changed in square matrix" + Environment.NewLine;
 
             matrix[1, 2] = 32;
-
+            
             StringAssert.AreEqualIgnoringCase(expected, matrix.MessageFromIndexSetted);
         }
 
         [Test]
-        public void Sum()
+        public void Sum_SquareAndSquare_Square()
         {
-            var matrix1 = new SquareMatrix<int>(1, 2, 3, 4);
+            var matrix = new SquareMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
-            var matrix = matrix1.Sum(matrix1, (a, b) => a + b);
+            var actual = matrix.Sum(matrix);
 
-            Console.WriteLine(matrix);
+            foreach (var variable in actual)
+            {
+                Console.WriteLine(variable);
+            }
+        }
+
+        [Test]
+        public void Sum_SquareAndDiagonal_Square()
+        {
+            var matrix = new SquareMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            var matrix1 = new DiagonalMatrix<int>(1, 0, 0, 0, 5, 0, 0, 0, 9);
+
+            var actual = matrix.Sum(matrix1);
+
+            foreach (var variable in actual)
+            {
+                Console.WriteLine(variable);
+            }
         }
     }
 }
