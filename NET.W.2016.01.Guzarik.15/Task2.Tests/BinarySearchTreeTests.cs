@@ -99,18 +99,6 @@ namespace Task2.Tests
         }
 
         [Test]
-        public void Add_PointDefaultComparer()
-        {
-            var tree = new BinarySearchTree<Point>();
-            var rand = new Random();
-
-            for (var i = 0; i < 10; i++)
-                tree.Add(new Point(rand.Next(30), rand.Next(30)));
-
-            Print(tree);
-        }
-
-        [Test]
         public void Add_PointCustomComparer()
         {
             var tree = new BinarySearchTree<Point>(new PointComparer());
