@@ -1,7 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using Task1.extensions;
-using Task1.hierarchy;
 
 namespace Task1.Tests
 {
@@ -12,11 +10,13 @@ namespace Task1.Tests
         public void Event()
         {
             var matrix = new SquareMatrix<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
-            var expected = "Index [1,2] has changed in square matrix" + Environment.NewLine;
 
             matrix[1, 2] = 32;
-            
-            StringAssert.AreEqualIgnoringCase(expected, matrix.MessageFromIndexSetted);
+
+            Console.WriteLine(matrix.EventInfo.IndexI);
+            Console.WriteLine(matrix.EventInfo.IndexJ);
+            Console.WriteLine(matrix.EventInfo.PreviousValue);
+            Console.WriteLine(matrix.EventInfo.NewValue);
         }
 
         [Test]
