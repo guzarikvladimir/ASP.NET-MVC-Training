@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using NLog;
+using Task1.Storages;
 
 namespace Task1.ConsoleUI
 {
@@ -13,9 +13,8 @@ namespace Task1.ConsoleUI
         {
             var service = new BookListService();
 
-            Console.WriteLine("---------------------------------------------");
             Console.WriteLine("--------------------Добавление---------------");
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine();
 
             var book1 = new Book("Паттерны проектирования на платформе .NET",
                 "Сергей Тепляков", "Питер", 2015, "Русский");
@@ -52,9 +51,8 @@ namespace Task1.ConsoleUI
                 Console.WriteLine(variable);
             }
 
-            Console.WriteLine("---------------------------------------------");
             Console.WriteLine("--------------------Удаление-----------------");
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine();
 
             var defBook = new Book("Unknown", "Unknown");
 
@@ -87,9 +85,8 @@ namespace Task1.ConsoleUI
                 Console.WriteLine(variable);
             }
 
-            Console.WriteLine("---------------------------------------------");
             Console.WriteLine("------------Сортировка по автору-------------");
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine();
 
             service.SortBooksByTag(new CompareByAuthor());
 
@@ -98,20 +95,40 @@ namespace Task1.ConsoleUI
                 Console.WriteLine(variable);
             }
 
-            Console.WriteLine("---------------------------------------------");
             Console.WriteLine("--------------------Поиск--------------------");
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine();
 
             var book = service.FindBookByTag(x => x.Author == "Джон Скит");
 
             Console.WriteLine(book);
 
-            Console.WriteLine("---------------------------------------------");
             Console.WriteLine("--------------Сохранение/Загрузка------------");
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine();
 
-            service.SaveBooks(new BookListStorage("BookStorage.txt"));
-            service.LoadBooks(new BookListStorage("BookStorage.txt"));
+            service.SaveBooks(new BookListStorage("BookStorage"));
+            service.LoadBooks(new BookListStorage("BookStorage"));
+
+            foreach (var variable in service)
+            {
+                Console.WriteLine(variable);
+            }
+
+            Console.WriteLine("------------------Сериализация---------------");
+            Console.WriteLine();
+
+            service.SaveBooks(new BookListStorageSerialization("BookStorageSerialization"));
+            service.LoadBooks(new BookListStorageSerialization("BookStorageSerialization"));
+
+            foreach (var variable in service)
+            {
+                Console.WriteLine(variable);
+            }
+
+            Console.WriteLine("------------------Xml storage----------------");
+            Console.WriteLine();
+
+            service.SaveBooks(new BookListStorageXml("BookStorageXml"));
+            //////////////////////////////////////////////////service.LoadBooks(new BookListStorageXML("BookStorageXml"));
 
             foreach (var variable in service)
             {

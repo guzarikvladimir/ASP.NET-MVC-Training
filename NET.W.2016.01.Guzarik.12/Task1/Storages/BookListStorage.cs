@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Task1
+namespace Task1.Storages
 {
     /// <summary>
     /// Class to work with a storage of book's collection
@@ -15,25 +15,17 @@ namespace Task1
         /// </summary>
         public BookListStorage(string fileName)
         {
-            _fileName = fileName;
+            _fileName = fileName + ".bin";
         }
 
         /// <summary>
-        /// Saves the book's collection the the storage
+        /// Saves the book's collection to the storage
         /// </summary>
         /// <remarks>If storage with the specified name does't exist, it will be created</remarks>
         public void SaveBooks(IEnumerable<Book> collection)
         {
-            Stream stream;
+            Stream stream = new FileStream(_fileName, FileMode.Create, FileAccess.Write);
 
-            try
-            {
-                stream = new FileStream(_fileName, FileMode.Create, FileAccess.Write);
-            }
-            catch (FileNotFoundException)
-            {
-                stream = new FileStream(_fileName, FileMode.CreateNew, FileAccess.Write);
-            }
             var bw = new BinaryWriter(stream);
 
             foreach (var variable in collection)
@@ -81,12 +73,10 @@ namespace Task1
 
             return collection;
         }
-    }
 
-    internal class NameNotFoundException : FileNotFoundException
-    {
-        public NameNotFoundException() { }
-
-        public NameNotFoundException(string message, FileNotFoundException inner) : base(message, inner) { }
+        private class NameNotFoundException : FileNotFoundException
+        {
+            public NameNotFoundException(string message, FileNotFoundException inner) : base(message, inner) { }
+        }
     }
 }
