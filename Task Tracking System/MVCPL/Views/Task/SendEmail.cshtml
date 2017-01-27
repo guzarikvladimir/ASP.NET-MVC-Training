@@ -1,0 +1,23 @@
+﻿@model IEnumerable<int>
+@{
+    ViewBag.Title = "Send email";
+}
+
+<br />
+<p>Enter mail data from which email notification will be send to selected users</p>
+<hr />
+<form method="post" action="@Url.Action("SendEmail", "Task")">
+    @foreach (var user in Model)
+    {
+        <input type="hidden" name="users" value="@user"/>
+    }
+    <label>Enter email address:</label>
+    <input type="text" name="email" class="form-control" />
+    <label>Enter password:</label>
+    <input type="password" name="password" class="form-control" />
+    <br />
+    <div class="btn-group">
+        <input type="submit" value="Send" class="btn btn-default" />
+        @Html.ActionLink("Back", "TaskManagement", null, new { @class = "btn btn-default" })
+    </div>
+</form>

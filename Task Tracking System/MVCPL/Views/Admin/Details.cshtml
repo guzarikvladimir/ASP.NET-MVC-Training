@@ -1,0 +1,42 @@
+﻿@using System.Web.Optimization
+@using MVCPL.Models
+@model UserViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>User's details</h2>
+<hr />
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            @Html.DisplayFor(model => model.Email, new { @class = " form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Role)
+            @Html.DisplayFor(model => model.Role, new { @class = " form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreationDate)
+            @Html.DisplayFor(model => model.CreationDate, new { @class = " form-control" })
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "UserManagement")
+        </p>
+        if (Model.Role == "User")
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tasks)
+                @Html.Partial("~/Views/Shared/_TasksPartial.cshtml", Model)
+            </div>
+        }
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

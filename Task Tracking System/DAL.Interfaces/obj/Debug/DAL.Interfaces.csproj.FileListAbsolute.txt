@@ -1,0 +1,15 @@
+C:\Users\Sacris\Desktop\ProjectManagementSystem\DAL.Interfaces\bin\Debug\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\DAL.Interfaces\bin\Debug\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\DAL.Interfaces\obj\Debug\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\DAL.Interfaces\obj\Debug\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\DAL.Interfaces\obj\Debug\DAL.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\Task Tracking System\DAL.Interfaces\bin\Debug\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System\DAL.Interfaces\bin\Debug\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\DAL.Interfaces\obj\Debug\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System\DAL.Interfaces\obj\Debug\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\DAL.Interfaces\obj\Debug\DAL.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\Task Tracking System — копия\DAL.Interfaces\bin\Debug\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\DAL.Interfaces\bin\Debug\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\DAL.Interfaces\obj\Debug\DAL.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\Task Tracking System — копия\DAL.Interfaces\obj\Debug\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\DAL.Interfaces\obj\Debug\DAL.Interfaces.pdb

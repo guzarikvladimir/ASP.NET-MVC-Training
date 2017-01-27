@@ -1,0 +1,57 @@
+﻿@using BLL.Interfaces.Entities
+@model MVCPL.Models.UserViewModel
+
+<ul class="list-group">
+    @if (Model.Tasks.Count == 0)
+    {
+        <li class="list-group-item">There's no tasks for user now</li>
+    }
+    else
+    {
+        foreach (var task in Model.Tasks)
+        {
+            <li class="list-group-item">
+                <div><b>Title: </b>@task.Title</div>
+                <div><b>Description: </b>@task.Description</div>
+                <div><b>Creation date: </b>@task.CreationDateTime.ToShortTimeString() @task.CreationDateTime.ToShortDateString()</div>
+                <div class="text-danger">
+                    <b>Deadline: @task.DeadlineDate.ToShortTimeString() @task.DeadlineTime.</b>
+                </div>
+                <div><b>Status: </b>@task.StatusName</div>
+                <div id="progress"></div>
+                <div class="progress">
+                    @{
+                        var progress = (int)((double)task.PointsCompleted / task.TotalPoints * 100);
+                        var barStyle = string.Empty;
+                        switch (task.StatusName)
+                        {
+                            case "In progress":
+                                break;
+                            case "Paused":
+                                barStyle = "progress-bar-warning";
+                                break;
+                            case "Canceled":
+                                barStyle = "progress-bar-danger";
+                                break;
+                            case "Completed":
+                                barStyle = "progress-bar-success";
+                                break;
+                            default:
+                                barStyle = "progress-bar-info";
+                                break;
+                        }
+                    }
+                    <div class="progress-bar @barStyle" role="progressbar" style="width: @progress%;"></div>
+                </div>
+                <div>
+                    @if (User.IsInRole("User"))
+                    {
+                        @(task.PointsCompleted == task.TotalPoints ?
+                          Html.ActionLink("Mark progress", null, null, htmlAttributes: new { @class = "btn btn-default disabled" }) :
+                          Ajax.ActionLink("Mark progress", "MarkProgress", "Home", new { userId = Model.Id, taskId = task.Id, points = task.PointsCompleted }, new AjaxOptions() { UpdateTargetId = "progress" }, new { @class = "btn btn-default" }))
+                    }
+                </div>
+            </li>
+                            }
+                        }
+</ul>

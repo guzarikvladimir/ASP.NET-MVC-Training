@@ -1,0 +1,50 @@
+﻿@model MVCPL.Models.TaskViewModel
+
+@{
+    ViewBag.Title = "Assign the task";
+}
+
+<br />
+<p>Choose users to assign the task</p>
+<hr />
+
+@if (ViewBag.Users.Count == 0)
+{
+    <p>There's no users to assign to</p>
+    @Html.ActionLink("Back", "TaskManagement", null, new { @class = "btn btn-default" })
+}
+else
+{
+    using (Html.BeginForm("Assign", "Task", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        foreach (var u in ViewBag.Users)
+        {
+            <input type="checkbox" name="selectedUsers" value="@u.Id"
+                   @{ var exists = Model?.Users?.Exists(m => m.Id == u.Id); }
+                   @(exists != null && (bool)exists ? "checked=\"checked\"" : "") />
+                @u.Email<br />
+    }
+    <input type="submit" value="Save" class="btn btn-default" />
+    @Html.ActionLink("Back", "TaskManagement", null, new { @class = "btn btn-default" })
+    }
+}
+
+@*using (Ajax.BeginForm("Assign", new AjaxOptions()
+    {
+        UpdateTargetId = "emailForm",
+        InsertionMode = InsertionMode.InsertAfter
+    }))
+    {
+        @Html.HiddenFor(model => model.Id)
+        foreach (var u in ViewBag.Users)
+        {
+            <input type="checkbox" name="selectedUsers" value="@u.Id"
+                   @{ var exists = Model?.Users?.Exists(m => m.Id == u.Id); }
+                   @(exists != null && (bool) exists ? "checked=\"checked\"" : "")/>
+            @u.Email<br/>
+        }
+        <input type="submit" value="Save" class="btn btn-default"/>
+        @Html.ActionLink("Back", "TaskManagement", null, new {@class = "btn btn-default"})
+    }*@

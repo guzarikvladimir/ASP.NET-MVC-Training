@@ -1,0 +1,22 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title - Task Tracking System</title>
+
+    <link rel="icon" href="~/Content/Images/favicon.ico">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/signin.css" rel="stylesheet">
+</head>
+<body>
+<div class="container form-signin">
+    @RenderBody()
+</div>
+@Scripts.Render("~/bundles/jqueryval")
+@RenderSection("scripts", required: false)
+</body>
+</html>

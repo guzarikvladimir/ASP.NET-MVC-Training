@@ -1,0 +1,36 @@
+﻿
+@using System.Web.Optimization
+@model MVCPL.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post,
+                                        new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h1 class="form-signin-heading">Register</h1>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "Email", placeholder = "Email address" })
+    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger", type = "Email", placeholder = "Email address", autofocus = "autofocus" })
+
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control", type = "Password", placeholder = "Password" })
+    @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger" })
+
+    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", type = "Password", placeholder = "Confirm password" })
+    @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-danger" })
+
+    @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control", placeholder = "Enter the code from the image" })
+    @Html.ValidationMessageFor(m => m.Captcha, null, new { @class = "text-danger" })
+    <div class="img-responsive">
+        <img src="@Url.Action("Captcha", "Account")" alt="captcha" />
+    </div>
+
+    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Register"/>
+    @Html.ActionLink("Back to log in", "Login", null, new { @class = "btn btn-lg btn-block" })
+}

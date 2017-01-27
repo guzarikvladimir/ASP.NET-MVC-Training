@@ -1,0 +1,13 @@
+﻿@model MVCPL.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Tasks";
+}
+
+<h2>@Html.LabelFor(model => model.Tasks)</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("~/Views/Shared/_TasksPartial.cshtml", Model)
+}

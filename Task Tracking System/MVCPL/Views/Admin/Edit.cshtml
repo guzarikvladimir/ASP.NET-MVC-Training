@@ -1,0 +1,34 @@
+﻿@using System.Web.Optimization
+@model MVCPL.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>User editing</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.DisplayFor(model => model.Email, new { @class = " form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreationDate)
+        @Html.DisplayFor(model => model.CreationDate, new { @class = " form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Role)
+        @Html.DropDownListFor(model => model.RoleId, ViewBag.Roles as SelectList, new { @class = " form-control" })
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-default" />
+        @Html.ActionLink("Back", "UserManagement", null, new { @class = "btn btn-default" })
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

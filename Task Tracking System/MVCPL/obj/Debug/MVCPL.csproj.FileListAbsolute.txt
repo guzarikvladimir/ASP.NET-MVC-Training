@@ -1,0 +1,239 @@
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\csc.exe
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\vbc.exe
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\VBCSCompiler.exe
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\MVCPL.dll.config
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\MVCPL.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\MVCPL.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Helpers.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Mvc.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Razor.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Webpages.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Webpages.Razor.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Razor.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Webpages.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Webpages.Razor.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Helpers.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Mvc.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\System.Web.Razor.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\System.Web.Webpages.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\System.Web.Webpages.Razor.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\System.Web.Helpers.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\System.Web.Mvc.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\obj\Debug\MVCPL.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\obj\Debug\MVCPL.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\obj\Debug\MVCPL.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\BLL.Interfaces.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\DependencyResolver.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Ninject.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Ninject.Web.Common.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Ninject.Web.Mvc.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\WebActivatorEx.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\DAL.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\EntityFramework.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ORM.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\BLL.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\BLL.Interfaces.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\DependencyResolver.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Ninject.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Ninject.Web.Common.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Ninject.Web.Mvc.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\DAL.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\EntityFramework.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ORM.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\BLL.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\EntityFramework.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\EntityFramework.SqlServer.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\EntityFramework.SqlServer.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Antlr3.Runtime.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Newtonsoft.Json.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Optimization.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\WebGrease.dll
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Antlr3.Runtime.pdb
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\Newtonsoft.Json.xml
+C:\Users\Sacris\Desktop\ProjectManagementSystem\MVCPL\bin\System.Web.Optimization.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\csc.exe
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\vbc.exe
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\VBCSCompiler.exe
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\MVCPL.dll.config
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\MVCPL.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\MVCPL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Antlr3.Runtime.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\BLL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\DependencyResolver.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\EntityFramework.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\EntityFramework.SqlServer.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Newtonsoft.Json.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Ninject.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Ninject.Web.Common.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Ninject.Web.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ORM.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Helpers.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Optimization.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Razor.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Webpages.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Webpages.Razor.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\WebActivatorEx.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\WebGrease.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\DAL.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\BLL.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\BLL.Interfaces.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\DependencyResolver.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ORM.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Antlr3.Runtime.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\EntityFramework.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\EntityFramework.SqlServer.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Newtonsoft.Json.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Ninject.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Ninject.Web.Common.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\Ninject.Web.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Optimization.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Razor.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Webpages.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Webpages.Razor.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Helpers.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\System.Web.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\DAL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\BLL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\EntityFramework.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\System.Web.Razor.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\System.Web.Webpages.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\System.Web.Webpages.Razor.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\System.Web.Helpers.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ru\System.Web.Mvc.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\obj\Debug\MVCPL.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\obj\Debug\MVCPL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\obj\Debug\MVCPL.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\NLog.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\NLog.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ActionMailer.Net.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ActionMailer.Net.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ActionMailer.Net.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ActionMailer.Net.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ActionMailer.Net.Mvc.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\ActionMailer.Net.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\PagedList.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\PagedList.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\PagedList.xml
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\PagedList.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\csc.exe
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\vbc.exe
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\VBCSCompiler.exe
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\MVCPL.dll.config
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\MVCPL.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\MVCPL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ActionMailer.Net.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ActionMailer.Net.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Antlr3.Runtime.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\BLL.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\BLL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\DAL.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\DAL.Interfaces.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\DependencyResolver.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\EntityFramework.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\EntityFramework.SqlServer.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Newtonsoft.Json.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Ninject.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Ninject.Web.Common.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Ninject.Web.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\NLog.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ORM.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\PagedList.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\PagedList.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Helpers.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Mvc.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Optimization.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Razor.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Webpages.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Webpages.Razor.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\WebActivatorEx.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\WebGrease.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\BLL.Interfaces.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\BLL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\DAL.Interfaces.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\DAL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\DependencyResolver.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ORM.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ActionMailer.Net.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ActionMailer.Net.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ActionMailer.Net.Mvc.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ActionMailer.Net.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Antlr3.Runtime.pdb
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\EntityFramework.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\EntityFramework.SqlServer.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Newtonsoft.Json.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Ninject.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Ninject.Web.Common.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\Ninject.Web.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\NLog.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\PagedList.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\PagedList.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Optimization.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Razor.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Webpages.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Webpages.Razor.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Helpers.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\System.Web.Mvc.xml
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\EntityFramework.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\System.Web.Razor.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\System.Web.Webpages.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\System.Web.Webpages.Razor.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\System.Web.Helpers.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\bin\ru\System.Web.Mvc.resources.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\obj\Debug\MVCPL.csprojResolveAssemblyReference.cache
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\obj\Debug\MVCPL.dll
+C:\Users\Sacris\Desktop\Task Tracking System — копия\MVCPL\obj\Debug\MVCPL.pdb
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\AutoMapper.dll
+C:\Users\Sacris\Desktop\Task Tracking System\MVCPL\bin\AutoMapper.xml

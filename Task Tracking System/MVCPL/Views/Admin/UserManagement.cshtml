@@ -1,0 +1,34 @@
+﻿@using System.Web.Optimization
+@model MVCPL.Infrastructure.UserPagedData
+
+@{
+    ViewBag.Title = "User management";
+}
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+
+<h2>User management</h2>
+
+@using (Ajax.BeginForm("UserManagement",
+                new { name = Model.FilterInfo.Name, role = Model.FilterInfo.SelectedRole, sortOrder = Model.SortInfo.Current, pageSize = Model.PageInfo.PageSize },
+                new AjaxOptions() { UpdateTargetId = "results" }, new { @class = "form-inline" }))
+{
+    <label class="cotrol-label">Role: </label>
+    @Html.DropDownList("role", Model.FilterInfo.Roles, new { @class = "form-control" })
+    <label class="cotrol-label">PageSize: </label>
+    @Html.DropDownList("pageSize", Model.PageInfo.PageSizes, new { @class = "form-control" })
+    <button type="submit" class="btn btn-default">
+        <span class="glyphicon glyphicon-filter"></span>
+    </button>
+    <input type="text" name="name" data-autocomplete-source="@Url.Action("AutocompleteSearch", "Home")" class="form-control" placeholder="Enter email" />
+    <button type="submit" class="btn btn-default">
+        <span class="glyphicon glyphicon-search"></span>
+    </button>
+}
+<br />
+<div id="results">
+    @Html.Partial("UserList", Model)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocomplete")
+}

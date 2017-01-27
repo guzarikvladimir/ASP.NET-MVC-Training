@@ -1,0 +1,16 @@
+﻿@model BLL.Interfaces.Entities.TaskEntity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<br />
+<div>Are you sure you want to delete task <b>@Html.DisplayFor(model => model.Title)</b>?</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        @Html.ActionLink("Back to user's list", "TaskManagement", null, new { @class = "btn" })
+    </div>
+}
