@@ -59,6 +59,12 @@ namespace MVCPL.Infrastructure
         public PageInfo PageInfo { get; set; }
     }
 
+    public class ExceptionPagedData
+    {
+        public IEnumerable<ExceptionViewModel> Exceptions { get; set; }
+        public PageInfo PageInfo { get; set; }
+    }
+
     public enum SortState
     {
         NameAsc,

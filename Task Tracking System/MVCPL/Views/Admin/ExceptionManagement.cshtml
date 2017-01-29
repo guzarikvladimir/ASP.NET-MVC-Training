@@ -1,5 +1,5 @@
 ﻿@using MVCPL.Helpers
-@model MVCPL.Infrastructure.PagedData<MVCPL.Models.ExceptionViewModel>
+@model MVCPL.Infrastructure.ExceptionPagedData
 
 @{
     ViewBag.Title = "ExceptionManagement";
@@ -7,7 +7,7 @@
 
 <h2>Exception management</h2>
 
-@if (!Model.Data.Any())
+@if (!Model.Exceptions.Any())
 {
     <hr />
     <br />
@@ -31,7 +31,7 @@ else
             </th>
             <th></th>
         </tr>
-        @foreach (var item in Model.Data)
+        @foreach (var item in Model.Exceptions)
         {
             <tr>
                 <td>
@@ -47,8 +47,8 @@ else
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, null) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, null)
+                    @Html.ActionLink("Details", "Details") |
+                    @Html.ActionLink("Delete", "Delete")
                 </td>
             </tr>
         }

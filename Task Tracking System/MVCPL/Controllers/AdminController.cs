@@ -134,17 +134,14 @@ namespace MVCPL.Controllers
 
         public ActionResult ExceptionManagement(int page = 1)
         {
-            throw new NotImplementedException();
-            //int pageSize = 10;
-            //var exceptionsPerPage = _exceptionService.GetAllExceptionEntities().Skip((page - 1) * pageSize).Take(pageSize).Select(e => e.ToMvcException());
-            //var pageInfo = new PageInfo()
-            //{
-            //    PageNumber = page,
-            //    PageSize = pageSize,
-            //    TotalItems = _exceptionService.GetAllExceptionEntities().Count()
-            //};
-            //var evm = new PagedData<ExceptionViewModel>() { PageInfo = pageInfo, Data = exceptionsPerPage };
-            //return View(evm);
+            int pageSize = 10;
+            var exceptions = _exceptionService.GetAllExceptionEntities().Select(e => e.ToMvcException());
+            var viewModel = new ExceptionPagedData()
+            {
+                PageInfo = new PageInfo() {TotalItems = exceptions.Count(), PageNumber = page, PageSize = pageSize},
+                Exceptions = exceptions.Skip((page - 1)*pageSize).Take(pageSize).ToList()
+            };
+            return View(viewModel);
         }
     }
 }

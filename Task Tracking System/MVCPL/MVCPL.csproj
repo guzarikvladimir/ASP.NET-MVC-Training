@@ -258,7 +258,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcceptAjaxAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -306,7 +305,6 @@
     <Content Include="Views\Home\Tasks.cshtml" />
     <Content Include="Views\Task\Create.cshtml" />
     <Content Include="Views\Task\Assign.cshtml" />
-    <Content Include="Views\Shared\_TasksPartial.cshtml" />
     <Content Include="Views\Task\TaskManagement.cshtml" />
     <Content Include="Views\Task\Details.cshtml" />
     <Content Include="Views\Task\Delete.cshtml" />
@@ -319,6 +317,7 @@
     <Content Include="Views\Error\Forbidden.cshtml" />
     <Content Include="Views\Error\InternalServerError.cshtml" />
     <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Shared\_TasksPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

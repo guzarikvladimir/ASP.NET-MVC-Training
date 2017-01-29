@@ -38,43 +38,7 @@ namespace MVCPL.Controllers
 
         public ActionResult Create()
         {
-            //return ContextDependentView();
             return View();
-        }
-
-        [HttpPost]
-        public JsonResult JsonCreate(TaskViewModel task, string returnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                task.CreationDateTime = DateTime.Now;
-                task.PointsCompleted = 0;
-                task.StatusId = 1;
-                _taskService.CreateTask(task.ToBllTask());
-                var newTask = _taskService.GetTaskByTitle(task.Title);
-                return Json(new {success = true, redirect = Url.Action(returnUrl)});
-            }
-            return Json(new { errors = GetErrorsFromModelState() });
-        }
-
-        private ActionResult ContextDependentView()
-        {
-            string actionName = ControllerContext.RouteData.GetRequiredString("action");
-            if (Request.QueryString["content"] != null)
-            {
-                ViewBag.FormAction = "Json" + actionName;
-                return PartialView();
-            }
-            else
-            {
-                ViewBag.FormAction = actionName;
-                return View();
-            }
-        }
-
-        private IEnumerable<string> GetErrorsFromModelState()
-        {
-            return ModelState.SelectMany(x => x.Value.Errors.Select(error => error.ErrorMessage));
         }
 
         [HttpPost]

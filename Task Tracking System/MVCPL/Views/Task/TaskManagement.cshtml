@@ -1,6 +1,4 @@
-﻿@using System.Web.Optimization
-@using MVCPL.Helpers
-@using MVCPL.Models
+﻿@using MVCPL.Helpers
 @model MVCPL.Infrastructure.TaskPagedData
 
 @{
@@ -12,15 +10,11 @@
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default"@*, id = "createLink", data_dialog_title = "Create new task"*@ })
 </p>
 
-<div id="dialog-modal" title="Create task">
-    <div id="modal"></div>
-</div>
-
 @if (!Model.Tasks.Any())
 {
     <hr />
-        <br />
-        <p>There's no tasks</p>
+    <br />
+    <p>There's no tasks</p>
 }
 else
 {
@@ -57,7 +51,4 @@ else
         <div class="btn-group">
             @Html.PageLinks(Model.PageInfo, x => Url.Action("TaskManagement", "Task", new { page = x }))
         </div>
-}
-@section Scripts {
-    <script src="~/Scripts/popup.js"></script>
 }

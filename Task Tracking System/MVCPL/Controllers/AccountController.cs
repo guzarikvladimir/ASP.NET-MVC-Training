@@ -42,7 +42,7 @@ namespace MVCPL.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("About", "Home");
                 }
                 ModelState.AddModelError("", "Incorrect login or password.");
             }

@@ -13,15 +13,15 @@ namespace MVCPL.Filters
 
         public void OnException(ExceptionContext exceptionContext)
         {
-            //var exception = new ExceptionViewModel()
-            //{
-            //    ExceptionMessage = exceptionContext.Exception.Message,
-            //    StackTrace = exceptionContext.Exception.StackTrace,
-            //    ControllerName = exceptionContext.RouteData.Values["controller"].ToString(),
-            //    ActionName = exceptionContext.RouteData.Values["action"].ToString(),
-            //    Date = DateTime.Now
-            //};
-            //ExceptionService.CreateException(exception.ToBllException());
+            var exception = new ExceptionViewModel()
+            {
+                ExceptionMessage = exceptionContext.Exception.Message,
+                StackTrace = exceptionContext.Exception.StackTrace,
+                ControllerName = exceptionContext.RouteData.Values["controller"].ToString(),
+                ActionName = exceptionContext.RouteData.Values["action"].ToString(),
+                Date = DateTime.Now
+            };
+            ExceptionService.CreateException(exception.ToBllException());
 
             exceptionContext.ExceptionHandled = false;
         }

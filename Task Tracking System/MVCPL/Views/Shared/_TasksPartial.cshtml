@@ -1,6 +1,5 @@
-﻿@using BLL.Interfaces.Entities
-@model MVCPL.Models.UserViewModel
-
+﻿@model MVCPL.Models.UserViewModel
+    
 <ul class="list-group">
     @if (Model.Tasks.Count == 0)
     {
@@ -46,12 +45,12 @@
                 <div>
                     @if (User.IsInRole("User"))
                     {
-                        @(task.PointsCompleted == task.TotalPoints ?
+                        @(task.StatusName != "In progress" ?
                           Html.ActionLink("Mark progress", null, null, htmlAttributes: new { @class = "btn btn-default disabled" }) :
-                          Ajax.ActionLink("Mark progress", "MarkProgress", "Home", new { userId = Model.Id, taskId = task.Id, points = task.PointsCompleted }, new AjaxOptions() { UpdateTargetId = "progress" }, new { @class = "btn btn-default" }))
+                          Html.ActionLink("Mark progress", "MarkProgress", "Home", new { userId = Model.Id, taskId = task.Id, points = task.PointsCompleted }, new { @class = "btn btn-default" }))
                     }
                 </div>
             </li>
-                            }
-                        }
+        }
+    }
 </ul>
